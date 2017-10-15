@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import GUI.MainMenu.MainMenuUI;
+
 /**
  *
  * @author New User
@@ -16,7 +18,6 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LoginUI().setVisible(false);
                 new MainMenuUI().setVisible(true);
             }
         });
