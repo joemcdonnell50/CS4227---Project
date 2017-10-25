@@ -6,22 +6,31 @@ public class DatabaseConfig {
     
     private static DatabaseConfig databaseConfigInstance;
     
-    private String serverName = "";
-    private String portNumber = "";
+    private String databaseType;
+    private String serverName;
+    private String portNumber;
     private String databaseName;
     private String userName;
     private String password;
     
-    private DatabaseConfig(){
+    public DatabaseConfig(){
         
     }
     
-    static{
-        databaseConfigInstance = new DatabaseConfig();
+    public void setDatabaseConfigInstance(DatabaseConfig config){
+        this.databaseConfigInstance = config;
     }
     
-    public static DatabaseConfig getInstance(){
+    public static DatabaseConfig getDatabaseConfig(){
         return databaseConfigInstance;
+    }
+    
+    public String getDatabaseType(){
+        return databaseType;
+    }
+    
+    public void setDatabaseType(String databaseType){
+        this.databaseType = databaseType;
     }
     
     public String getServerName() {
