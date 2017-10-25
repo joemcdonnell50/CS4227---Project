@@ -19,6 +19,16 @@ public class LoginUI extends javax.swing.JFrame {
     public LoginUI() {
         initComponents();
     }
+    
+    static LoginUI lui = new LoginUI(); 
+    
+    public static void makeVisible(){
+        lui.setVisible(true); 
+    }
+    
+    public static void makeNonVisible(){
+        lui.setVisible(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
