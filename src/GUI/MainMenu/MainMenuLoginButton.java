@@ -17,8 +17,8 @@ public class MainMenuLoginButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        new MainMenuUI().setVisible(false);
-        new LoginUI().setVisible(true);
+        //new MainMenuUI().setVisible(false);
+        LoginUI.makeVisible();
     }
     
 }
