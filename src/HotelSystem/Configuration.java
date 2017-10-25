@@ -14,12 +14,14 @@ public class Configuration {
     
     public void initializeDatabaseConfig(){
         Properties properties = readPropertiesFile();
-        DatabaseConfig.getInstance().setServerName(properties.getProperty("serverName"));
-        DatabaseConfig.getInstance().setPortNumber(properties.getProperty("portNumber"));
-        DatabaseConfig.getInstance().setDatabaseName(properties.getProperty("databaseName"));
-        DatabaseConfig.getInstance().setUserName(properties.getProperty("userName"));
-        DatabaseConfig.getInstance().setPassword(properties.getProperty("password"));
-        
+        DatabaseConfig dbConfig = new DatabaseConfig();
+        dbConfig.setDatabaseType(properties.getProperty("databaseType"));
+        dbConfig.setServerName(properties.getProperty("serverName"));
+        dbConfig.setPortNumber(properties.getProperty("portNumber"));
+        dbConfig.setDatabaseName(properties.getProperty("databaseName"));
+        dbConfig.setUserName(properties.getProperty("userName"));
+        dbConfig.setPassword(properties.getProperty("password"));
+        dbConfig.setDatabaseConfigInstance(dbConfig);
     }
     
     public Properties readPropertiesFile(){
