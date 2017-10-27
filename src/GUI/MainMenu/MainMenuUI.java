@@ -15,6 +15,17 @@ public class MainMenuUI extends JFrame {
 
     public MainMenuUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    
+    static MainMenuUI ui = new MainMenuUI(); 
+    
+    public static void makeVisible(){
+        ui.setVisible(true); 
+    }
+    
+    public static void makeNonVisible(){
+        ui.setVisible(false);
     }
     
     private void initComponents() {
