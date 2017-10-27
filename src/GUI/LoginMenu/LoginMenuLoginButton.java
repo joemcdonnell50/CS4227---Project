@@ -17,8 +17,9 @@ public class LoginMenuLoginButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        //System.out.println("It worked!");
-        JOptionPane.showMessageDialog(null, "It Worked!"); 
+       LoginUI.makeNonVisible();
+       OptionsMenuUI.makeVisible();
+
     }
     
 }
