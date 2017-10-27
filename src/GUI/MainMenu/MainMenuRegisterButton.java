@@ -17,7 +17,7 @@ public class MainMenuRegisterButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        //System.out.println("It worked!");
-        JOptionPane.showMessageDialog(null, "Register"); 
+        LoginUI.makeNonVisible();
+        RegisterMenuUI.makeVisible();
     }
 }
