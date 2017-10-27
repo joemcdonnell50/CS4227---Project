@@ -17,10 +17,20 @@ public class RegisterMenuUI extends javax.swing.JFrame {
     /**
      * Creates new form RegisterMenu
      */
-    public RegisterMenuUI() {
+   public RegisterMenuUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
+    static RegisterMenuUI ui = new RegisterMenuUI(); 
+    
+    public static void makeVisible(){
+        ui.setVisible(true); 
+    }
+    
+    public static void makeNonVisible(){
+        ui.setVisible(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
