@@ -17,8 +17,9 @@ public class RegisterMenuUI extends javax.swing.JFrame {
     /**
      * Creates new form RegisterMenu
      */
-    public RegisterMenuUI() {
+   public RegisterMenuUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     static RegisterMenuUI registerUI = new RegisterMenuUI();
@@ -55,6 +56,7 @@ public class RegisterMenuUI extends javax.swing.JFrame {
         return registerUI.emailField.getText();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

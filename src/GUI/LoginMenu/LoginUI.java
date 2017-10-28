@@ -18,6 +18,7 @@ public class LoginUI extends javax.swing.JFrame {
      */
     public LoginUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     static LoginUI lui = new LoginUI(); 

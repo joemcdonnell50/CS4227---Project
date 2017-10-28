@@ -18,6 +18,17 @@ public class ReservationMenuUI extends javax.swing.JFrame {
      */
     public ReservationMenuUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    static ReservationMenuUI ui = new ReservationMenuUI(); 
+    
+    public static void makeVisible(){
+        ui.setVisible(true); 
+    }
+    
+    public static void makeNonVisible(){
+        ui.setVisible(false);
     }
 
     /**

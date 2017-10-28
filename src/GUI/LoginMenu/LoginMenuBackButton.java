@@ -18,10 +18,8 @@ public class LoginMenuBackButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        MainMenuUI mm = new MainMenuUI();
-        LoginUI li = new LoginUI(); 
-        li.setVisible(false); 
-        mm.setVisible(true);
+        LoginUI.makeNonVisible();
+        MainMenuUI.makeVisible();
         
     }
     
