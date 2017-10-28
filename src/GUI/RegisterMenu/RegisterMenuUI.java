@@ -20,6 +20,40 @@ public class RegisterMenuUI extends javax.swing.JFrame {
     public RegisterMenuUI() {
         initComponents();
     }
+    
+    static RegisterMenuUI registerUI = new RegisterMenuUI();
+    
+    public static void makeVisible(){
+        registerUI.setVisible(true);
+    }
+    
+    public static void makeNonVisible(){
+        registerUI.setVisible(false);
+    }
+    
+    public static RegisterMenuUI getRegisterUIInstance(){
+        return registerUI;
+    }
+    
+    public String getPassword(){
+    return registerUI.passwordField.getPassword().toString();
+    }
+    
+    public String getUsername(){
+        return registerUI.UsernameField.getText();
+    }
+    
+    public String getFirstname(){
+        return registerUI.ForenameField.getText();
+    }
+    
+    public String getLastName(){
+        return registerUI.surnameField.getText();
+    }
+    
+    public String getEmailAddress(){
+        return registerUI.emailField.getText();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

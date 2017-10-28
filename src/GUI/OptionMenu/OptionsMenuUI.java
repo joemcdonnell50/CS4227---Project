@@ -10,11 +10,11 @@ import javax.swing.JFrame;
  */
 public class OptionsMenuUI extends javax.swing.JFrame {
     
-    public static JFrame frame; 
+    static OptionsMenuUI omUI = new OptionsMenuUI();   
     
-    public static JFrame getFrame() {
-        return frame;
-    }   
+    public static void makeVisible(){
+        omUI.setVisible(true); 
+    }
 
     //public static OptionsMenuUI menuUI; 
     

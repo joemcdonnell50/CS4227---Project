@@ -6,6 +6,7 @@
 package GUI.RegisterMenu;
 
 import GUI.Command;
+import HotelSystem.PanelOperations.RegisterMenuOperations;
 import javax.swing.JButton;
 
 /**
@@ -16,7 +17,12 @@ public class RegisterMenuRegisterButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            RegisterMenuOperations.register(RegisterMenuUI.registerUI);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        
     }
     
 }

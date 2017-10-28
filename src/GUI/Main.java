@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import HotelSystem.Configuration;
 import GUI.MainMenu.MainMenuUI;
 
 /**
@@ -14,13 +15,20 @@ import GUI.MainMenu.MainMenuUI;
 public class Main {
     
     public static void main(String [] args) {
-        
+        initializeConfig();
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                
                 new MainMenuUI().setVisible(true);
             }
         });
+        
+    }
+    
+    public static void initializeConfig(){
+        Configuration config = new Configuration();
+        config.initializeDatabaseConfig();
     }
     
 }

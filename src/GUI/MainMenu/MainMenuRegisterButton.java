@@ -6,6 +6,7 @@
 package GUI.MainMenu;
 
 import GUI.Command;
+import GUI.RegisterMenu.RegisterMenuUI;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -17,7 +18,6 @@ public class MainMenuRegisterButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        //System.out.println("It worked!");
-        JOptionPane.showMessageDialog(null, "Register"); 
+        RegisterMenuUI.makeVisible();
     }
 }

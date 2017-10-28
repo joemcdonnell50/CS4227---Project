@@ -29,6 +29,14 @@ public class LoginUI extends javax.swing.JFrame {
     public static void makeNonVisible(){
         lui.setVisible(false);
     }
+    
+    public String getUsername(){
+        return lui.UsernameField.getText();
+    }
+    
+    public String getPassword(){
+        return lui.PasswordField.getText();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

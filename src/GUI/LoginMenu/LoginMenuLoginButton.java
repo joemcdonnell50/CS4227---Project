@@ -6,6 +6,8 @@
 package GUI.LoginMenu;
 
 import GUI.Command;
+import GUI.OptionMenu.OptionsMenuUI;
+import HotelSystem.PanelOperations.LoginMenuOperations;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -17,8 +19,13 @@ public class LoginMenuLoginButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        //System.out.println("It worked!");
-        JOptionPane.showMessageDialog(null, "It Worked!"); 
+        try{
+            if (LoginMenuOperations.login(LoginUI.lui.getUsername(), LoginUI.lui.getPassword())){
+                OptionsMenuUI.makeVisible();
+            }
+        } catch(Exception ex){
+            ex.printStackTrace();
+        } 
     }
     
 }

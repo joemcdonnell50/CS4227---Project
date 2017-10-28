@@ -14,7 +14,7 @@ public class ServiceFactory extends EntityFactory{
     
     private Repository repository = null;
     
-    public Entity createEntity(String query, String [] parameters) throws Exception{
+    public Entity createEntity(String [] parameters) throws Exception{
         ResultSet resultSet = null;
         repository = RepositoryFactory.getRepository(DatabaseConfig.getDatabaseConfig());
         resultSet = repository.queryDatabaseStatement(null);

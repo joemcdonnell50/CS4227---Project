@@ -18,25 +18,26 @@ public class UserFactory extends EntityFactory{
     private String query;
     
     // parameters = user_name, password
-    public Entity createEntity(String query, String [] parameters) throws Exception{
+    public Entity createEntity(String... parameters) throws Exception{
         ResultSet resultSet = null;
         repository = RepositoryFactory.getRepository(DatabaseConfig.getDatabaseConfig());
-        query = "SELECT first_name, last_name, email_address, loyalty_level " + 
-                "WHERE user_name = '" + parameters[0] + "' and password = '" + parameters[1] + "';";
+        query = "SELECT user_name, password, first_name, last_name, email_address, loyalty_level FROM User " + 
+                "WHERE user_name = '" + parameters[0] + "' AND password = '" + parameters[1] + "';";
         try{
             resultSet = repository.queryDatabaseStatement(query);
         } catch (Exception ex){
             ex.printStackTrace();
             return null;
         }
-        
         User user = new User();
-        user.setUser_name(parameters[0]);
-        user.setPassword(parameters[1]);
-        user.setFirst_name(resultSet.getString("first_name"));
-        user.setLast_name(resultSet.getString("last_name"));
-        user.setEmail_address(resultSet.getString("email_address"));
-        user.setLoyalty_level(Integer.valueOf(resultSet.getString("loyalty_level")));
+        while (resultSet.next()){
+            user.setUser_name(parameters[0]);
+            user.setPassword(parameters[1]);
+            user.setFirst_name(resultSet.getString("first_name"));
+            user.setLast_name(resultSet.getString("last_name"));
+            user.setEmail_address(resultSet.getString("email_address"));
+            user.setLoyalty_level(Integer.valueOf(resultSet.getString("loyalty_level")));
+        }
         
         return user;
     }

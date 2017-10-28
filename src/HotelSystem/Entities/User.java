@@ -10,6 +10,8 @@ public class User extends Entity{
     private String last_name;
     private String email_address;
     private int loyalty_level;
+    
+    private  static User loggedUser;
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
@@ -37,6 +39,10 @@ public class User extends Entity{
 
     public void setLoyalty_level(int loyalty_level) {
         this.loyalty_level = loyalty_level;
+    }
+    
+    public void setLoggerUser(User user){
+        this.loggedUser = user;
     }
 
     public int getUser_id() {

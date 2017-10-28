@@ -14,10 +14,10 @@ public class UserReservationDetailsFactory extends EntityFactory{
     private Repository repository;
     
     
-    public Entity createEntity(String query, String [] parameters) throws Exception{
+    public Entity createEntity(String [] parameters) throws Exception{
         ResultSet resultSet = null;
         repository = RepositoryFactory.getRepository(DatabaseConfig.getDatabaseConfig());
-        resultSet = repository.queryDatabaseStatement(query);
+        resultSet = repository.queryDatabaseStatement(null);
         
         
         return null;

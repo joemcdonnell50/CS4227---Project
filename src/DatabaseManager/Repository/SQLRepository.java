@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.mysql.jdbc.Driver;
  
 public abstract class SQLRepository implements Repository {
     
@@ -26,7 +27,8 @@ public abstract class SQLRepository implements Repository {
     public Connection getConnection() throws SQLException, ClassNotFoundException {
         if (connection == null){
             Class.forName(getDriver());
-            connection = DriverManager.getConnection(endpoint, userName, password);
+            int port = 3306;
+            connection = DriverManager.getConnection("jdbc:mysql://cs4227db.cdsfnb4onzy8.eu-west-1.rds.amazonaws.com:3306/cs4227_db", userName, password);
         }
        return connection;
     }
@@ -50,7 +52,7 @@ public abstract class SQLRepository implements Repository {
         try{
             statement = getConnection().createStatement();
             statement.execute(query);
-            connection.commit();
+            //connection.commit();
         } catch (Exception ex){
             ex.printStackTrace();
         }

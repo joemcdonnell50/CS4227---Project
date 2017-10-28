@@ -30,7 +30,7 @@ public abstract class EntityFactory {
         }
     }
     
-    public abstract Entity createEntity(String query, String [] parameters) throws Exception;
+    public abstract Entity createEntity(String... parameters) throws Exception;
     
     public abstract List<Entity> createEntityList(String query, String [] parameters) throws Exception;
     
