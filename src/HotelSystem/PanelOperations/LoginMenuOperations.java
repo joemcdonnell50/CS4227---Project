@@ -11,7 +11,7 @@ public class LoginMenuOperations {
         boolean valid = false;
         EntityFactory userFactory = EntityFactory.getEntityFactory("user");
         User user = (User) userFactory.createEntity(userName, password);
-        if (!user.equals(null)){
+        if (user.getPassword() != null){
             valid = true;
             user.setLoggerUser(user);
         }

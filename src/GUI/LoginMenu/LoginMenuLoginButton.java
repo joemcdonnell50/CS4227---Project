@@ -28,7 +28,7 @@ public class LoginMenuLoginButton extends JButton implements Command {
         } 
 
        LoginUI.makeNonVisible();
-       OptionsMenuUI.makeVisible();
+       //OptionsMenuUI.makeVisible();
 
 
     }

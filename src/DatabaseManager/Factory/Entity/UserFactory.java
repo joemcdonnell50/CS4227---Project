@@ -37,6 +37,12 @@ public class UserFactory extends EntityFactory{
             user.setLast_name(resultSet.getString("last_name"));
             user.setEmail_address(resultSet.getString("email_address"));
             user.setLoyalty_level(Integer.valueOf(resultSet.getString("loyalty_level")));
+            System.out.println(user.getUser_name());
+            System.out.println(user.getPassword());
+            System.out.println(user.getFirst_name());
+            System.out.println(user.getLast_name());
+            System.out.println(user.getEmail_address());
+            System.out.println(user.getLoyalty_level());
         }
         
         return user;
