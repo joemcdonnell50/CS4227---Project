@@ -16,7 +16,12 @@ public class AddServicesButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            MakeReservationOperation.makeReservation(ReservationMenuUI.getReservationMenuUIInstance());
+            JOptionPane.showMessageDialog(null, "Reservation Made!"); 
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }
     
 }
