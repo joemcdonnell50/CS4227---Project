@@ -38,6 +38,10 @@ public class LoginUI extends javax.swing.JFrame {
     public String getPassword(){
         return lui.PasswordField.getText();
     }
+    
+    public static LoginUI getLoginUIInstance(){
+        return lui; 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
