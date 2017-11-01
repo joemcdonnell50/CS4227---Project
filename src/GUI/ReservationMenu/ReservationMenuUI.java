@@ -23,12 +23,53 @@ public class ReservationMenuUI extends javax.swing.JFrame {
 
     static ReservationMenuUI ui = new ReservationMenuUI(); 
     
+    public static ReservationMenuUI getReservationMenuUIInstance(){
+        return ui;
+    }
+    
     public static void makeVisible(){
         ui.setVisible(true); 
     }
     
     public static void makeNonVisible(){
         ui.setVisible(false);
+    }
+    
+    //Getters
+    public String getHotelComboBox() {
+        return ui.HotelComboBox.getSelectedItem().toString();
+    }
+
+    public int getNoOfGuestsField() {
+        String Guests = NoOfGuestsField.getText();
+        int NoOfGuests = Integer.parseInt(Guests); 
+        return NoOfGuests; 
+    }
+
+    public String getRoomComboBox() {
+        return ui.RoomComboBox.getSelectedItem().toString();
+    }
+
+    public String getjXDatePicker1() {
+        Date arrivalDate;
+        arrivalDate = jXDatePicker1.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/uuuu");
+        String ArrivalDate = dateFormat.format(arrivalDate); 
+        return ArrivalDate;
+    }
+
+    public String getjXDatePicker2() {
+        Date departureDate;
+        departureDate = jXDatePicker1.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/uuuu");
+        String DepartureDate = dateFormat.format(departureDate); 
+        return DepartureDate;
+    }
+    
+    public String getUsername(){
+        LoginUI lui = LoginUI.getLoginUIInstance(); 
+        String username = lui.getUsername(); 
+        return username; 
     }
 
     /**
@@ -97,6 +138,11 @@ public class ReservationMenuUI extends javax.swing.JFrame {
         
         HomeButton = new HomeButton();
         HomeButton.setText("Home");
+        
+        ButtonHandler vf = new ButtonHandler();
+        CheckAvailabilityButton.addActionListener(vf);
+        AddServicesButton.addActionListener(vf);
+        HomeButton.addActionListener(vf); 
         
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
