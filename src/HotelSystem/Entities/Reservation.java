@@ -11,7 +11,11 @@ public class Reservation extends Entity{
     private int number_of_guests;
     private String arrival_date;
     private String checkout_date;
-
+    
+   private static Reservation currentReservation;
+    
+    
+ 
     public void setReservation_id(int reservation_id) {
         this.reservation_id = reservation_id;
     }
@@ -66,5 +70,13 @@ public class Reservation extends Entity{
 
     public String getCheckout_date() {
         return checkout_date;
+    } 
+    
+    public static void setReservationInstance(Reservation currentReservation){
+        Reservation.currentReservation = currentReservation;
+    }
+    
+    public static Reservation getReservationInstance(){
+        return currentReservation;
     }
 }
