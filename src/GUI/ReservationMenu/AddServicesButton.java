@@ -6,7 +6,10 @@
 package GUI.ReservationMenu;
 
 import GUI.Command;
+import HotelSystem.PanelOperations.MakePaymentOperation;
+import HotelSystem.PanelOperations.MakeReservationOperation;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +22,9 @@ public class AddServicesButton extends JButton implements Command {
         try {
             MakeReservationOperation.makeReservation(ReservationMenuUI.getReservationMenuUIInstance());
             JOptionPane.showMessageDialog(null, "Reservation Made!"); 
+            MakePaymentOperation makepaymentOp = new MakePaymentOperation();
+            System.out.println("ducks");
+            makepaymentOp.CalculateCost();
         } catch (Exception ex) {
             System.out.println(ex);
         }
