@@ -36,7 +36,7 @@ public class DatabaseOperations implements AutoCloseable{
     public void insertReservation(Reservation reservation){
         query = "INSERT INTO Reservation (user_name, hotel_name, room_type, number_of_guests, arrival_date, checkout_date) " + 
                 "VALUES('" + reservation.getUser_name() + "','" + reservation.getHotel_name() + "','" + reservation.getRoom_type() + 
-                "','" + reservation.getNumber_of_guests() + "," + reservation.getArrival_date() + "','" + reservation.getCheckout_date() + "');";
+                "','" + reservation.getNumber_of_guests() + "','" + reservation.getArrival_date() + "','" + reservation.getCheckout_date() + "');";
         repository.executeStatement(query);
     }
     
