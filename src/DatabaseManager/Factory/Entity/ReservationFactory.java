@@ -8,6 +8,7 @@ import DatabaseManager.Repository.Repository;
 import HotelSystem.Entities.Entity;
 import HotelSystem.Entities.Reservation;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,6 +35,22 @@ public class ReservationFactory extends EntityFactory{
 
     @Override
     public List<Entity> createEntityList(String query, String[] parameters) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResultSet resultSet = null;
+        repository = RepositoryFactory.getRepository(DatabaseConfig.getDatabaseConfig());
+        query = "SELECT hotel_name, room_type, number_of_guests, arrival_date, checkout_date, services from UserReservations " + 
+                       "WHERE user_name = '" + parameters[0] + "';";
+        resultSet = repository.queryDatabaseStatement(query);
+        
+        List<Entity> userReservations = new ArrayList();
+        Reservation reservation = new Reservation();
+        while (resultSet.next()){
+            reservation.setHotel_name(resultSet.getString("hotel_name"));
+            reservation.setRoom_type(resultSet.getString("room_type"));
+            reservation.setNumber_of_guests(Integer.valueOf(resultSet.getString("number_of_guests")));
+            reservation.setArrival_date(resultSet.getString("arrival_date"));
+            reservation.setCheckout_date(resultSet.getString("checkout_date"));
+        }
+        
+        return userReservations;
     }
 } 

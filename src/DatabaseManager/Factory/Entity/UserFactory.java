@@ -31,7 +31,7 @@ public class UserFactory extends EntityFactory{
         }
         User user = new User();
         while (resultSet.next()){
-            user.setUser_name(parameters[0]);
+            user.setUser_name(parameters[0]); 
             user.setPassword(parameters[1]);
             user.setFirst_name(resultSet.getString("first_name"));
             user.setLast_name(resultSet.getString("last_name"));
