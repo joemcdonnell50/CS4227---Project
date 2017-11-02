@@ -128,10 +128,10 @@ public class OptionsMenuUI extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify                     
-    private javax.swing.JButton logoutButton;
+    private javax.swing.JButton LogoutButton;
     private javax.swing.JButton MakeResButton;
     private javax.swing.JButton ManageResButton;
-    private javax.swing.JButton ViewResButton;
+    private javax.swing.JButton ViewMyResButton;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

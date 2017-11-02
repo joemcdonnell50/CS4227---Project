@@ -6,7 +6,9 @@
 package GUI.ReservationMenu;
 
 import GUI.Command;
+import HotelSystem.PanelOperations.MakeReservationOperation;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *

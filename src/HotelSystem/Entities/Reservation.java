@@ -11,6 +11,7 @@ public class Reservation extends Entity{
     private int number_of_guests;
     private String arrival_date;
     private String checkout_date;
+    private String services;
 
     public void setReservation_id(int reservation_id) {
         this.reservation_id = reservation_id;
@@ -38,6 +39,10 @@ public class Reservation extends Entity{
 
     public void setCheckout_date(String checkout_date) {
         this.checkout_date = checkout_date;
+    }
+    
+    public void setServices(String services){
+        
     }
 
     public int getReservation_id() {
