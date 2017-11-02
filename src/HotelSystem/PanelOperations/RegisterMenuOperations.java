@@ -16,8 +16,7 @@ public class RegisterMenuOperations {
         
         try (DatabaseOperations dbOps = new DatabaseOperations()){
             dbOps.insertUser(user);
-        }
-            
+        }   
     }
 }
   

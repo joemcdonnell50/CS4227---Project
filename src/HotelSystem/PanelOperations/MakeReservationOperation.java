@@ -26,11 +26,11 @@ public class MakeReservationOperation {
         reservation.setNumber_of_guests(reservationUI.getNoOfGuestsField());
         reservation.setArrival_date(reservationUI.getjXDatePicker1());
         reservation.setCheckout_date(reservationUI.getjXDatePicker2());
+        reservation.setReservationInstance(reservation);
           
-
-        try(DatabaseOperations dbOps = new DatabaseOperations()){
-            dbOps.insertReservation(reservation);
-        }
+//try(DatabaseOperations dbOps = new DatabaseOperations()){
+    //        dbOps.insertReservation(reservation);
+  //      }
         
     }
     
