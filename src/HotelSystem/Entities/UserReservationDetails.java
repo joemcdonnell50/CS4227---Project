@@ -8,10 +8,12 @@ public class UserReservationDetails extends Entity{
     private int reservation_id;
     private String hotel_name;
     private String room_type;
+    private int number_of_guests;
     private String arrival_date;
     private String checkout_date;
     private String services;
     private String tours;
+    private double services_price;
     private double price;
 
     public void setUser_id(int user_id){
@@ -28,6 +30,10 @@ public class UserReservationDetails extends Entity{
     
     public void setRoomType(String room_type){
         this.room_type = room_type;
+    }
+    
+    public void setNumberOfGuests(int number_of_guests){
+        this.number_of_guests = number_of_guests;
     }
 
     public void setArrival_date(String arrival_date) {
@@ -50,6 +56,10 @@ public class UserReservationDetails extends Entity{
         this.price = price;
     }
     
+    public void setServicesPrice(double services_price){
+        this.services_price = services_price;
+    }
+    
     public int getUser_id() {
         return user_id;
     }
@@ -64,6 +74,10 @@ public class UserReservationDetails extends Entity{
     
     public String getRoomType(){
         return room_type;
+    }
+    
+    public int getNumberOfGuests(){
+        return number_of_guests;
     }
 
     public String getArrival_date() {
@@ -84,6 +98,10 @@ public class UserReservationDetails extends Entity{
 
     public double getPrice() {
         return price;
+    }
+    
+    public double getServicesPrice(){
+        return services_price;
     }
      
 }
