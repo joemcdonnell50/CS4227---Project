@@ -8,6 +8,11 @@ package GUI.LoginMenu;
 import GUI.Command;
 import GUI.OptionMenu.OptionsMenuUI;
 import HotelSystem.PanelOperations.LoginMenuOperations;
+import Interceptor.ConnectionReplyContext;
+import Interceptor.ConnectionReplyInterceptor;
+import Interceptor.LoggingDispatcher;
+import Interceptor.LoggingInterceptor;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -29,6 +34,18 @@ public class LoginMenuLoginButton extends JButton implements Command {
 
        LoginUI.makeNonVisible();
        //OptionsMenuUI.makeVisible();
+       
+       ConnectionReplyInterceptor cri = new LoggingInterceptor();
+        
+        LoggingDispatcher dis = new LoggingDispatcher();
+        
+        ConnectionReplyContext context;  
+        
+        dis.registerLoggingInterceptor(cri);
+        
+        context = new ConnectionReplyContext(new Date()); 
+        
+        dis.preRemoteReply(context);
 
 
     }

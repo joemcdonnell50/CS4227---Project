@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/New%20User/Documents/HotelFramework/HotelFramework/src/GUI/Main.java</file>
-            <file>file:/C:/Users/New%20User/Documents/HotelFramework/HotelFramework/src/GUI/MainMenuLoginButton.java</file>
-            <file>file:/C:/Users/New%20User/Documents/HotelFramework/HotelFramework/src/GUI/ButtonHandler.java</file>
-            <file>file:/C:/Users/New%20User/Documents/HotelFramework/HotelFramework/src/GUI/LoginMenuBackButton.java</file>
-            <file>file:/C:/Users/New%20User/Documents/HotelFramework/HotelFramework/src/GUI/LoginUI.java</file>
-            <file>file:/C:/Users/New%20User/Documents/HotelFramework/HotelFramework/src/GUI/LoginMenuLoginButton.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/DatabaseManager/Repository/SQLRepository.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/GUI/OptionMenu/OptionsMenuLogoutButton.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/GUI/ReservationMenu/ReservationMenuUI.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/Interceptor/LoggingInterceptor.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/GUI/OptionMenu/OptionsMenuUI.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/Interceptor/LoggingContextObject.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/DatabaseManager/Factory/Entity/ReservationFactory.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/HotelSystem/Configuration.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/Interceptor/LoggingDispatcher.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/Interceptor/UnmarshaledRequest.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/GUI/MainMenu/MainMenuLoginButton.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/HotelSystem/PanelOperations/MakePaymentOperation.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/GUI/ReservationMenu/HomeButton.java</file>
+            <file>file:/C:/Users/New%20User/Documents/GitHub/CS4227---Project/src/GUI/Command.java</file>
         </group>
     </open-files>
 </project-private>

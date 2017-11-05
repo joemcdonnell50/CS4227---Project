@@ -7,6 +7,9 @@ package GUI;
 
 import HotelSystem.Configuration;
 import GUI.MainMenu.MainMenuUI;
+import Interceptor.ConnectionReplyInterceptor;
+import Interceptor.LoggingDispatcher;
+import Interceptor.LoggingInterceptor;
 
 /**
  *
@@ -27,6 +30,12 @@ public class Main {
 
             }
         });
+        
+        //ConnectionReplyInterceptor cri = new LoggingInterceptor();
+        
+        //LoggingDispatcher dis = new LoggingDispatcher(); 
+        
+        //dis.registerLoggingInterceptor(cri); 
         
     }
     

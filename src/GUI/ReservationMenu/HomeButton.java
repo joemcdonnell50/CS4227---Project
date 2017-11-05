@@ -6,6 +6,7 @@
 package GUI.ReservationMenu;
 
 import GUI.Command;
+import GUI.OptionMenu.OptionsMenuUI;
 import javax.swing.JButton;
 
 /**
@@ -16,7 +17,7 @@ public class HomeButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        OptionsMenuUI.makeVisible();
     }
     
 }

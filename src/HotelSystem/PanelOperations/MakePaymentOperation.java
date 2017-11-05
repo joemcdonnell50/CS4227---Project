@@ -5,7 +5,6 @@
  */
 package HotelSystem.PanelOperations;
 
-import HotelSystem.Entities.Payment;
 import HotelSystem.Entities.Reservation;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,7 +19,7 @@ public class MakePaymentOperation {
     private double total;
     
     public static void makePaymentOperation() throws Exception {
-        Payment payment = new Payment();
+        //Payment payment = new Payment();
        // payment.setConfirmPaid(paymentUI.getConfirmPaid());
        
     }

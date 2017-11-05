@@ -28,7 +28,7 @@ public class Configuration {
         Properties p = new Properties();
         InputStream input = null;
         try{
-            input = new FileInputStream("C:\\Users\\Jamees\\Documents\\GitHub\\CS4227---Project\\src\\HotelSystem\\config.properties");
+            input = new FileInputStream("C:\\Users\\New User\\Documents\\GitHub\\CS4227---Project\\src\\HotelSystem\\config.properties");
             p.load(input);
         } catch (Exception ex){
             ex.printStackTrace();
