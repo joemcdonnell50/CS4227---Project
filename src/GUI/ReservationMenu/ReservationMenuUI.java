@@ -58,15 +58,15 @@ public class ReservationMenuUI extends javax.swing.JFrame {
     public String getjXDatePicker1() {
         Date arrivalDate;
         arrivalDate = jXDatePicker1.getDate();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/uuuu");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String ArrivalDate = dateFormat.format(arrivalDate); 
         return ArrivalDate;
     }
 
     public String getjXDatePicker2() {
         Date departureDate;
-        departureDate = jXDatePicker1.getDate();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/uuuu");
+        departureDate = jXDatePicker2.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String DepartureDate = dateFormat.format(departureDate); 
         return DepartureDate;
     }
