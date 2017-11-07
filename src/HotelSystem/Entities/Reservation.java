@@ -81,7 +81,7 @@ public class Reservation extends Entity{
         return checkout_date;
     } 
     
-    public static void setReservationInstance(Reservation currentReservation){
+    public void setReservationInstance(Reservation currentReservation){
         Reservation.currentReservation = currentReservation;
     }
     

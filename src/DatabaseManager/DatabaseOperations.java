@@ -11,6 +11,7 @@ import HotelSystem.Entities.UserReservationDetails;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 //import java.lang.AutoCloseable; -- Automatic Resource Management in Java
 
 public class DatabaseOperations implements AutoCloseable{
@@ -24,11 +25,17 @@ public class DatabaseOperations implements AutoCloseable{
     }
     
     // User
-    public void insertUser(User user){
+    public int insertUser(User user) throws Exception{
         query = "INSERT INTO User (user_name, password, first_name, last_name, email_address, loyalty_level)" + 
                 "VALUES('" + user.getUser_name() + "','" +  user.getPassword() + "','" + user.getFirst_name() + "','" + 
                 user.getLast_name() + "','" + user.getEmail_address() + "','0');";
         repository.executeStatement(query);
+        
+        query = "SELECT user_id FROM User WHERE username = '" + user.getUser_name() + "' and password = '" + user.getPassword() + "';";
+        resultSet = repository.queryDatabaseStatement(query);
+        int user_id = Integer.valueOf(resultSet.getString("user_id"));
+        
+        return user_id;
     }
     
     
@@ -55,6 +62,26 @@ public class DatabaseOperations implements AutoCloseable{
         return listOfServices;
     }
     
+    public Object[][] getServicesData() throws Exception{
+        query = "SELECT service_name, price FROM Services;";
+        resultSet = repository.queryDatabaseStatement(query);
+        ResultSetMetaData meta = resultSet.getMetaData();
+        int rowCount = 0;
+        while (resultSet.next()){
+            rowCount++;
+        }
+        Object[][] rowData = new Object[rowCount][2];
+        resultSet.first();
+        rowCount = 0;
+        while (resultSet.next()){
+            rowData[rowCount][0] = resultSet.getString("service_name");
+            rowData[rowCount][1] = resultSet.getString("price");
+            rowCount++;
+        }
+        
+        return rowData;
+    }
+    
     // UserReservationDetails
     public void insertUserReservationDetails(UserReservationDetails userReservationDetails){
         query = "INSERT INTO UserReservationDetails (user_id, reservation_id, arrival_date, checkout_date, services, tours, price) " + 
@@ -65,6 +92,7 @@ public class DatabaseOperations implements AutoCloseable{
     }
 
     public void close() throws Exception {
+        resultSet.close();
         repository.closeConnection(); 
         repository.closeStatement();
     }
