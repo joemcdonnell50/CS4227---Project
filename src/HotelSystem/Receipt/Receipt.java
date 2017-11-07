@@ -18,7 +18,7 @@ public class Receipt implements ReceiptInterface{
                 + "Receipt for reservation number " + Details.getReservation_id() + "\n"
                 + "Hotel : " + "\t" + Details.getHotel() + "\n"
                 + "Roomtype : " + "\t" + Details.getRoomType() + "\n"
-                + "Number of Guests : " + "\t" + Details.getNumberofGuests() + "\n"
+                + "Number of Guests : " + "\t" + Details.getNumberOfGuests() + "\n"
                 + "Date of Arrival : " + "\t" + Details.getArrival_date() + "\n"
                 + "Check out Date : " + "\t" + Details.getCheckout_date() + "\n"
                 + "Cost of Services :" + "\t" + Details.getServicePrice() + "\n"

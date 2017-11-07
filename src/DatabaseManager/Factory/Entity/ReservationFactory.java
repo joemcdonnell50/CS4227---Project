@@ -34,10 +34,10 @@ public class ReservationFactory extends EntityFactory{
     }
 
     @Override
-    public List<Entity> createEntityList(String query, String[] parameters) throws Exception {
+    public List<Entity> createEntityList(String... parameters) throws Exception {
         ResultSet resultSet = null;
         repository = RepositoryFactory.getRepository(DatabaseConfig.getDatabaseConfig());
-        query = "SELECT hotel_name, room_type, number_of_guests, arrival_date, checkout_date, services from UserReservations " + 
+        String query = "SELECT hotel_name, room_type, number_of_guests, arrival_date, checkout_date, services from UserReservations " + 
                        "WHERE user_name = '" + parameters[0] + "';";
         resultSet = repository.queryDatabaseStatement(query);
         

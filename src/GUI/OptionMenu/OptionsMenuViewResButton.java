@@ -7,7 +7,8 @@ package GUI.OptionMenu;
 
 import GUI.Command;
 import javax.swing.JButton;
-
+import GUI.UserReservations.UserReservationsUI;
+import HotelSystem.PanelOperations.ViewReservationsOperation;
 /**
  *
  * @author New User
@@ -16,7 +17,12 @@ public class OptionsMenuViewResButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            UserReservationsUI ui = new UserReservationsUI(ViewReservationsOperation.populateTable());
+            ui.makeVisible();
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
     
 }

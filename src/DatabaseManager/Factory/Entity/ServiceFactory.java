@@ -25,7 +25,7 @@ public class ServiceFactory extends EntityFactory{
     } 
 
     @Override
-    public List<Entity> createEntityList(String query, String[] parameters) throws Exception {
+    public List<Entity> createEntityList(String... parameters) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

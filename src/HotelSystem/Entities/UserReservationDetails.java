@@ -6,28 +6,27 @@ public class UserReservationDetails extends Entity{
     
     private int user_id;
     private int reservation_id;
+    private String hotel;
+    private String room_type;
+    private int number_of_guests;
     private String arrival_date;
     private String checkout_date;
     private String services;
     private String tours;
-    private String hotel;
-    private String NumberofGuests;
-    private double ServicePrice;
+    private Double services_price;
+    private Double price;
+    
 
     public double getServicePrice() {
-        return ServicePrice;
+        return services_price;
     }
 
     public void setServicePrice(double ServicePrice) {
-        this.ServicePrice = ServicePrice;
+        this.services_price = ServicePrice;
     }
 
-    public String getNumberofGuests() {
-        return NumberofGuests;
-    }
-
-    public void setNumberofGuests(String getNumberofGuests) {
-        this.NumberofGuests = getNumberofGuests;
+    public void setNumberofGuests(int number_of_guests) {
+        this.number_of_guests = number_of_guests;
     }
     
     public String getHotel() {
@@ -39,25 +38,16 @@ public class UserReservationDetails extends Entity{
     }
 
     public String getRoomType() {
-        return RoomType;
+        return room_type;
     }
 
     public void setRoomType(String RoomType) {
-        this.RoomType = RoomType;
+        this.room_type = RoomType;
     }
 
-    public String getNumberOfGuests() {
-        return NumberOfGuests;
+    public int getNumberOfGuests() {
+        return number_of_guests;
     }
-
-    public void setNumberOfGuests(String NumberOfGuests) {
-        this.NumberOfGuests = NumberOfGuests;
-    }
-    private String RoomType;
-    private String NumberOfGuests;
-    private double price;
-
-    
 
     public void setUser_id(int user_id){
         this.user_id = user_id;
