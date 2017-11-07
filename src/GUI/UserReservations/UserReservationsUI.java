@@ -1,7 +1,6 @@
 
 package GUI.UserReservations;
 
-import GUI.UserReservations.TableModel;
 
 
 public class UserReservationsUI extends javax.swing.JFrame {
@@ -42,8 +41,8 @@ public class UserReservationsUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
-        TableModel tableModel = new TableModel();
-        tableModel.setData(rowData);
+        //TableModel tableModel = new TableModel();
+        //tableModel.setData(rowData);
         
         //jTable1.setModel(tableModel);
 
