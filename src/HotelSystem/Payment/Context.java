@@ -1,7 +1,10 @@
 
-
 package HotelSystem.Payment;
 
+/**
+ *
+ * @author Owner
+ */
 
 public class Context {
    private Strategy strategy;
