@@ -5,10 +5,18 @@
  */
 package GUI.PaymentUI;
 
+import GUI.Command;
+import javax.swing.JButton;
+
 /**
  *
  * @author Owner
  */
-public class HomeButton {
+public class HomeButton extends JButton implements Command {
+
+    @Override
+    public void execute() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

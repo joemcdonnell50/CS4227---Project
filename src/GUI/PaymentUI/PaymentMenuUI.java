@@ -5,6 +5,13 @@
  */
 package GUI.PaymentUI;
 
+import GUI.ButtonHandler;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JTextField;
+import org.jdesktop.swingx.JXDatePicker;
+
 /**
  *
  * @author Owner
@@ -32,9 +39,27 @@ public class PaymentMenuUI extends javax.swing.JFrame {
     public static void makeNonVisible(){
         ui.setVisible(false);
     }
-    
-    
 
+    public String getCVVNumberField() {
+        return ui.CVVNumberField.toString();
+    }
+
+    public String getCardNumberField() {
+        return ui.CardNumberField.toString();
+    }
+
+    public String getExpDateField() {
+        Date expiryDate;
+        expiryDate = ExpDateField.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String ExpiryDate = dateFormat.format(expiryDate); 
+        return ExpiryDate;
+    }
+
+    public String getFullNameField() {
+        return ui.FullNameField.toString();
+    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -72,12 +97,19 @@ public class PaymentMenuUI extends javax.swing.JFrame {
         jLabel5.setText("CVV Number:");
 
         
-
+        MakePaymentBtn = new MakePaymentButton(); 
         MakePaymentBtn.setText("Make Payment");
 
+        CancelPaymentBtn = new CancelPaymentButton(); 
         CancelPaymentBtn.setText("Cancel Payment");
         
+        HomeBtn = new HomeButton(); 
         HomeBtn.setText("Home");
+        
+        ButtonHandler vf = new ButtonHandler();
+        MakePaymentBtn.addActionListener(vf);
+        CancelPaymentBtn.addActionListener(vf);
+        HomeBtn.addActionListener(vf); 
         
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
