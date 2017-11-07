@@ -5,7 +5,7 @@
  */
 package HotelSystem.PanelOperations;
 
-import HotelSystem.Entities.Payment;
+//import HotelSystem.Entities.Payment;
 import HotelSystem.Entities.Reservation;
 import HotelSystem.Entities.User;
 import HotelSystem.Payment.Context;
@@ -25,7 +25,7 @@ public class MakePaymentOperation {
     private double total;
     
     public static void makePaymentOperation() throws Exception {
-        Payment payment = new Payment();
+        //Payment payment = new Payment();
        // payment.setConfirmPaid(paymentUI.getConfirmPaid());
        
     }
@@ -62,7 +62,7 @@ public class MakePaymentOperation {
         double Cost = ((NumberofNight * PricePerNight) * NumberOfGuests) + (WeekendCost * daysOnWeekend) + servicePrice;
         int LoyaltyLevel = 1;
         User user = new User();
-        //LoyaltyLevel =user.getLoyalty_level();
+        LoyaltyLevel =user.getLoyalty_level();
         switch (LoyaltyLevel) {
             case 1:
                 Context context = new Context(new Discount10());

@@ -40,6 +40,7 @@ public class UserReservationsUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             rowData,
             new String [] {
