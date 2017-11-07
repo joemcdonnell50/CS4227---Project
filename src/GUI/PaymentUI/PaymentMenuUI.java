@@ -41,11 +41,12 @@ public class PaymentMenuUI extends javax.swing.JFrame {
     }
 
     public String getCVVNumberField() {
-        return ui.CVVNumberField.toString();
+        return ui.CVVNumberField.getText();
+        
     }
 
     public String getCardNumberField() {
-        return ui.CardNumberField.toString();
+        return ui.CardNumberField.getText();
     }
 
     public String getExpDateField() {
@@ -57,7 +58,7 @@ public class PaymentMenuUI extends javax.swing.JFrame {
     }
 
     public String getFullNameField() {
-        return ui.FullNameField.toString();
+        return ui.FullNameField.getText();
     }
     
     
