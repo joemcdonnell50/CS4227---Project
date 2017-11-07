@@ -13,10 +13,12 @@ public class RegisterMenuOperations {
         user.setFirst_name(registerUI.getFirstname());
         user.setLast_name(registerUI.getLastName());
         user.setEmail_address(registerUI.getEmailAddress());
-        
+        int userId = 0;
         try (DatabaseOperations dbOps = new DatabaseOperations()){
             dbOps.insertUser(user);
         }   
+        user.setUser_id(userId);
+        user.setLoggerUser(user);
     }
 }
   
