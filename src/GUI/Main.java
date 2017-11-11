@@ -31,11 +31,19 @@ public class Main {
             }
         });
         
-        //ConnectionReplyInterceptor cri = new LoggingInterceptor();
+        registerInterceptor(); 
         
-        //LoggingDispatcher dis = new LoggingDispatcher(); 
+    }
+    
+    public static void registerInterceptor(){
         
-        //dis.registerLoggingInterceptor(cri); 
+        ConnectionReplyInterceptor cri = new LoggingInterceptor();
+        
+        LoggingDispatcher dis = null;
+       
+        dis = dis.getDispatcher();
+        
+        dis.registerLoggingInterceptor(cri); 
         
     }
     

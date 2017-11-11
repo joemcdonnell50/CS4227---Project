@@ -14,7 +14,6 @@ import Interceptor.LoggingDispatcher;
 import Interceptor.LoggingInterceptor;
 import java.util.Date;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,19 +32,15 @@ public class LoginMenuLoginButton extends JButton implements Command {
         } 
 
        LoginUI.makeNonVisible();
-       //OptionsMenuUI.makeVisible();
        
-       ConnectionReplyInterceptor cri = new LoggingInterceptor();
         
-        LoggingDispatcher dis = new LoggingDispatcher();
+       LoggingDispatcher dis = null;
+       
+       dis = dis.getDispatcher();
         
-        ConnectionReplyContext context;  
-        
-        dis.registerLoggingInterceptor(cri);
-        
-        context = new ConnectionReplyContext(new Date()); 
-        
-        dis.preRemoteReply(context);
+       ConnectionReplyContext context = new ConnectionReplyContext(new Date());  
+
+       dis.preRemoteReply(context);
 
 
     }
