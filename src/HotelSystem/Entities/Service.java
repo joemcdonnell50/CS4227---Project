@@ -2,33 +2,53 @@ package HotelSystem.Entities;
 
 
 public class Service extends Entity{
-    
+    /*
     private int service_id;
     private String service_name;
     private double price;
+    */
 
-    public void setService_id(int service_id) {
-        this.service_id = service_id;
-    }
- 
-    public void setService_name(String service_name) {
-        this.service_name = service_name;
+
+    private int reservationID;
+    private int hasWifi;
+    private int hasSauna;
+    private int hasHammam;
+    private int hasPool;
+    private int totalServicePrice;
+    
+    
+    public Service(int reservationID, int hasWifi, int hasSauna, int hasHammam, int hasPool, int totalServicePrice){
+        super();
+        this.reservationID = reservationID;
+        this.hasWifi = hasWifi;
+        this.hasSauna = hasSauna;
+        this.hasHammam = hasHammam;
+        this.hasPool = hasPool; 
+        this.totalServicePrice = totalServicePrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public int getReservationID() {
+        return reservationID;
     }
 
-    public int getService_id() {
-        return service_id;
+    public int getHasWifi() {
+        return hasWifi;
     }
 
-    public String getService_name() {
-        return service_name;
+    public int getHasSauna() {
+        return hasSauna;
     }
 
-    public double getPrice() {
-        return price;
+    public int getHasHammam() {
+        return hasHammam;
+    }
+
+    public int getHasPool() {
+        return hasPool;
+    }
+    
+    public int getTotalServicePrice() {
+        return hasPool;
     }
     
     
