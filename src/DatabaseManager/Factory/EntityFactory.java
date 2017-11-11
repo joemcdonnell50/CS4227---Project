@@ -5,6 +5,7 @@ import DatabaseManager.Repository.Repository;
 import DatabaseManager.Factory.RepositoryFactory;
 import DatabaseManager.Factory.Entity.UserFactory;
 import DatabaseManager.Factory.Entity.ReservationFactory;
+import DatabaseManager.Factory.Entity.ServiceFactory;
 import DatabaseManager.Factory.Entity.UserReservationDetailsFactory;
 import HotelSystem.Entities.Entity;
 import java.util.List;
@@ -17,6 +18,9 @@ public abstract class EntityFactory {
         }
         else if (type.equalsIgnoreCase("reservation")){
             return new ReservationFactory();
+        }
+        else if (type.equalsIgnoreCase("service")){
+            return new ServiceFactory();
         }
         else if (type.equalsIgnoreCase("userreservationdetails")){
             return new UserReservationDetailsFactory();

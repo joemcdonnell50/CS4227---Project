@@ -11,7 +11,6 @@ import HotelSystem.Entities.UserReservationDetails;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 //import java.lang.AutoCloseable; -- Automatic Resource Management in Java
 
 public class DatabaseOperations implements AutoCloseable{
@@ -41,19 +40,7 @@ public class DatabaseOperations implements AutoCloseable{
         repository.executeStatement(query);
     }
     
-    public void insertUserServices(Service servicePackage){
-        System.out.println("Insert User Services");
-        query = "INSERT INTO UserServices (reservation_id, wifi, sauna, hammam, pool, total_service_price) " + 
-                "VALUES('" + servicePackage.getReservationID() + "','" + servicePackage.getHasWifi() + "','" + servicePackage.getHasSauna() + 
-                "','" + servicePackage.getHasHammam() + "','" + servicePackage.getHasPool() + "','"  + servicePackage.getTotalServicePrice() + "');";
-        System.out.println("After query");
-        
-        repository.executeStatement(query);
-        System.out.println("Afetr Execute");
-    }
-    
     // Service
-    /*
     public List<Entity> getListOfServices() throws Exception{
         List<Entity> listOfServices = new ArrayList<Entity>();
         query = "SELECT service_name, price FROM Services;";
@@ -66,37 +53,6 @@ public class DatabaseOperations implements AutoCloseable{
         }
         resultSet.close();
         return listOfServices;
-    }
-*/
-    
-    public Object[][] getServicesData() throws Exception{
-        System.out.println("did it get this far");
-        query = "SELECT service_id, service_name, service_price FROM Services;";
-        resultSet = repository.queryDatabaseStatement(query);
-        ResultSetMetaData meta = resultSet.getMetaData();
-        int rowCount = 0;
-        while (resultSet.next()){
-            rowCount++;
-        }
-        System.out.println("row count" + rowCount);
-        Object[][] rowData = new Object[rowCount - 1][2];
-        resultSet.first();
-        rowCount = 0;
-        while (resultSet.next()){
-            rowData[rowCount][0] = resultSet.getString("service_name");
-            rowData[rowCount][1] = resultSet.getString("service_price");
-            rowCount++;
-        }
-        
-        /*for (Object[] rowData1 : rowData) {
-        for (Object rowData11 : rowData1) {
-        //rowData[i][j]=data[i][j];
-        System.out.println(rowData11);
-        }
-        }*/
-        
-        
-        return rowData;
     }
     
     // UserReservationDetails
