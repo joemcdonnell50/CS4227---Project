@@ -7,6 +7,7 @@ package GUI.PaymentUI;
 
 import GUI.ButtonHandler;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -58,6 +59,22 @@ public class PaymentMenuUI extends javax.swing.JFrame {
         return ui.FullNameField.getText();
     }
     
+    public static void setCVVNumberField(String cvv){
+        ui.CVVNumberField.setText(cvv);
+    }
+    
+    public static void setCardNumberField(String card_number){
+        ui.CardNumberField.setText(card_number);
+    }
+    
+    public static void setExpDateField(String exp) throws ParseException{
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ui.ExpDateField.setDate(dateFormat.parse(exp));
+    }
+    
+    public static void setNameField(String name){
+        ui.FullNameField.setText(name);
+    }
 
     
     @SuppressWarnings("unchecked")

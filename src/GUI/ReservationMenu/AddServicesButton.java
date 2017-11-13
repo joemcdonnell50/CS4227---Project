@@ -24,6 +24,7 @@ import HotelSystem.PanelOperations.MakePaymentOperation;
 import HotelSystem.PanelOperations.MakeReservationOperation;
 import HotelSystem.PanelOperations.ViewReservationsOperation;
 import HotelSystem.Entities.Receipt;
+import HotelSystem.PanelOperations.AddServicesOperation;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -58,9 +59,11 @@ public class AddServicesButton extends JButton implements Command {
             JOptionPane.showMessageDialog(null, "Reservation Made!"); 
             MakePaymentOperation makepaymentOp = new MakePaymentOperation();
             makepaymentOp.CalculateCost();
-           // ServicesMenuUI.makeVisible();
+            rowData = AddServicesOperation.getServiceRowData();
+            ServicesMenuUI ui = new ServicesMenuUI(rowData);
+            ui.makeVisible();
             makepaymentOp.CalculateCost();
-            PaymentMenuUI.makeVisible();
+            
 
         } catch (Exception ex) {
             System.out.println(ex);

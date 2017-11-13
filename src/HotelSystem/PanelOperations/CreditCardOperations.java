@@ -22,7 +22,11 @@ public class CreditCardOperations {
     public static void CreditCard(PaymentMenuUI paymentUI) throws Exception {
         //set setters in CreditCard Entity and set instance
         CreditCard creditcard = new CreditCard();
-        
+        creditcard.setCreditCardNum(paymentUI.getCardNumberField());
+        creditcard.setCVNum(paymentUI.getCVVNumberField());
+        creditcard.setExpiryDate(paymentUI.getExpDateField());
+        creditcard.setNameOnCard(paymentUI.getFullNameField());
+        creditcard.setCreditCardInstance(creditcard);
     }
     
     public static void getCreditCardDetails() throws Exception{
@@ -33,16 +37,11 @@ public class CreditCardOperations {
         creditCard.setCurrentCreditCard(creditCard);
     }
     
-    public static void insertCreditCardDetails(PaymentMenuUI paymentUI) throws Exception{
-        CreditCard creditcard = new CreditCard();
-        creditcard.setCreditCardNum(paymentUI.getCardNumberField());
-        creditcard.setCVNum(paymentUI.getCVVNumberField());
-        creditcard.setExpiryDate(paymentUI.getExpDateField());
-        creditcard.setNameOnCard(paymentUI.getFullNameField());
-        creditcard.setCreditCardInstance(creditcard);
+    public static void insertCreditCardDetails() throws Exception{
+        
         
         try (DatabaseOperations ops = new DatabaseOperations()){
-            ops.insertUserCreditCardDetails(creditcard, User.getLoggedUser());
+            ops.insertUserCreditCardDetails(CreditCard.getCurrentCreditCard(), User.getLoggedUser());
         }
     }
     

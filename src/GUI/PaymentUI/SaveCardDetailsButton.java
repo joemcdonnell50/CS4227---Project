@@ -6,6 +6,9 @@
 package GUI.PaymentUI;
 
 import GUI.Command;
+import HotelSystem.PanelOperations.CreditCardOperations;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 /**
@@ -16,6 +19,10 @@ public class SaveCardDetailsButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        
+        try {
+            CreditCardOperations.insertCreditCardDetails();
+        } catch (Exception ex) {
+            Logger.getLogger(SaveCardDetailsButton.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

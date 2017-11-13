@@ -1,7 +1,7 @@
 package HotelSystem.Entities;
 
 
-public class Service extends Entity{
+public class Service implements Entity{
     /*
     private int service_id;
     private String service_name;
@@ -16,6 +16,8 @@ public class Service extends Entity{
     private int hasPool;
     private int totalServicePrice;
     
+    private static Service serviceInstance;
+    
     
     public Service(int reservationID, int hasWifi, int hasSauna, int hasHammam, int hasPool, int totalServicePrice){
         super();
@@ -25,6 +27,18 @@ public class Service extends Entity{
         this.hasHammam = hasHammam;
         this.hasPool = hasPool; 
         this.totalServicePrice = totalServicePrice;
+    }
+    
+    public void setServiceInstance(Service service){
+        serviceInstance = service;
+    }
+    
+    public static Service getServiceInstance(){
+        return serviceInstance;
+    }
+    
+    public void setReservationID(int reservationID){
+        this.reservationID = reservationID;
     }
 
     public int getReservationID() {

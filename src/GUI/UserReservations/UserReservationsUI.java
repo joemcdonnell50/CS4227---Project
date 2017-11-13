@@ -50,15 +50,15 @@ public class UserReservationsUI extends javax.swing.JFrame {
             rowData,
             new String [] {
                 "Hotel Name", "Room Type", "No. Of Guests", "Arrival Date", "Checkout Date",
-                                    "Services", "Tours", "Service Total Price", "Total Price"
+                                    "Services", "Service Total Price", "Total Price"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class,
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class, java.lang.Double.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

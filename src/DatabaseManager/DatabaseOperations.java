@@ -43,10 +43,8 @@ public class DatabaseOperations implements AutoCloseable{
     }
     
     public void insertUserCreditCardDetails(CreditCard creditCard, User user){
-        query = "INSERT INTO User (name_on_card, credit_card_number, cvv, expiry)" + 
-                "VALUES('" + creditCard.getNameOnCard() + "','" + creditCard.getCreditCardNum() + "','" + creditCard.getCVNum() +
-                "','" + creditCard.getExpiryDate() + "') " + "WHERE user_id = " + user.getUser_id() + ";";
-        repository.executeStatement(query);
+        query = "UPDATE User SET name_on_card = '" + creditCard.getNameOnCard() + "', credit_card_number = '" + creditCard.getCreditCardNum() + "', cvv = '" + creditCard.getCVNum() + "', expiry = '" + creditCard.getExpiryDate() + "' WHERE user_id = " + user.getUser_id() + ";";
+        repository.executeUpdate(query);
     }
     
     
@@ -64,6 +62,11 @@ public class DatabaseOperations implements AutoCloseable{
         }
         
         return reservation;
+    }
+    
+    public void deleteReservation(int reservation_id){
+        query = "DELETE FROM UserReservations WHERE reservation_id = " + reservation_id + ";";
+        repository.executeUpdate(query);
     }
     
     public void insertUserServices(Service servicePackage){
@@ -104,10 +107,11 @@ public class DatabaseOperations implements AutoCloseable{
             rowCount++;
         }
         System.out.println("row count" + rowCount);
-        Object[][] rowData = new Object[rowCount - 1][2];
-        resultSet.first();
+        Object[][] rowData = new Object[rowCount][2];
+        resultSet.beforeFirst();
         rowCount = 0;
         while (resultSet.next()){
+            System.out.println(resultSet.getString("service_name"));
             rowData[rowCount][0] = resultSet.getString("service_name");
             rowData[rowCount][1] = resultSet.getString("service_price");
             rowCount++;
@@ -126,8 +130,8 @@ public class DatabaseOperations implements AutoCloseable{
     
     // UserReservationDetails
     public void insertUserReservationDetails(User user, Reservation reservation, Service services, double total_price){
-        query = "INSERT INTO UserReservationDetails (user_id, hotel_name, room_type, arrival_date, checkout_data, services, services_price, price) " +
-                "VALUES('" + user.getUser_id() + "','" + reservation.getHotel_name() + "','" + reservation.getRoom_type() + "','" + 
+        query = "INSERT INTO UserReservationDetails (user_id, reservation_id, hotel_name, room_type, arrival_date, checkout_data, services, services_price, price) " +
+                "VALUES('" + user.getUser_id() + "','" + reservation.getReservation_id() + "','" + reservation.getHotel_name() + "','" + reservation.getRoom_type() + "','" + 
                 reservation.getArrival_date() + "','" + reservation.getCheckout_date() + "','" + services.toString() + "','" + services.getTotalServicePrice() +
                 "','" + total_price + "';";
         
