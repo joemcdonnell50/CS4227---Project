@@ -62,7 +62,7 @@ public abstract class SQLRepository implements Repository {
         try{
             statement = getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             statement.execute(query);
-            connection.commit();
+            //connection.commit();
         } catch (SQLException sqlEx){
             sqlEx.printStackTrace();
             return false;

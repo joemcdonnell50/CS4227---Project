@@ -25,8 +25,6 @@ public class ButtonHandler implements ActionListener {
         catch (Exception ex){
             System.out.println(ex);
         }
-        
-        
     }
     
     

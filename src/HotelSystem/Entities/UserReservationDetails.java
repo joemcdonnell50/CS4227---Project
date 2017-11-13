@@ -2,7 +2,7 @@
 package HotelSystem.Entities;
 
 
-public class UserReservationDetails extends Entity{
+public class UserReservationDetails implements Entity{
     
     private int user_id;
     private int reservation_id;
@@ -12,7 +12,6 @@ public class UserReservationDetails extends Entity{
     private String arrival_date;
     private String checkout_date;
     private String services;
-    private String tours;
     private Double services_price;
     private Double price;
     
@@ -69,9 +68,6 @@ public class UserReservationDetails extends Entity{
         this.services = services;
     }
 
-    public void setTours(String tours) {
-        this.tours = tours;
-    }
 
     public void setPrice(double price) {
         this.price = price;
@@ -95,10 +91,6 @@ public class UserReservationDetails extends Entity{
 
     public String getServices() {
         return services;
-    }
-
-    public String getTours() {
-        return tours;
     }
 
     public double getPrice() {

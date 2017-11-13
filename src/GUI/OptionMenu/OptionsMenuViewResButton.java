@@ -18,7 +18,7 @@ public class OptionsMenuViewResButton extends JButton implements Command {
     @Override
     public void execute() {
         try{
-            UserReservationsUI ui = new UserReservationsUI(ViewReservationsOperation.populateTable());
+            UserReservationsUI ui = new UserReservationsUI(ViewReservationsOperation.populateTable("0"));
             ui.makeVisible();
         } catch(Exception ex){
             ex.printStackTrace();

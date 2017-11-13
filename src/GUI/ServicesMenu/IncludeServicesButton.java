@@ -17,24 +17,16 @@ import HotelSystem.PanelOperations.CreditCardOperations;
 import HotelSystem.Services.ServicePackageBuilder;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import HotelSystem.Services.ServicePackageBuilder;
+import javax.swing.JButton;
+import GUI.PaymentUI.PaymentMenuUI;
 
 /**
  *
  * @author Liam
  */
 public class IncludeServicesButton extends JButton implements Command {
-    
-    private int reservationID;
-    private int hasWifi;
-    private int hasSauna;
-    private int hasHammam;
-    private int hasPool;
-    private int totalServicePrice;
-    
-    
-    //get values from ui here
-    
-    
+       
     
     @Override
     public void execute() {
@@ -42,17 +34,25 @@ public class IncludeServicesButton extends JButton implements Command {
         
     try{
         
-        Service servicePackage = new ServicePackageBuilder()
-                                                         .setReservationID(reservationID)
-                                                         .setHasWifi(hasWifi)
-                                                         .setHasSauna(hasSauna)
-                                                         .setHasHammam(hasHammam)
-                                                         .setHasPool(hasPool)
-                                                         .setTotalServicePrice(totalServicePrice)
-                                                         .getService();
         
-        servicePackage.setServiceInstance(servicePackage);
-        AddUserServicesOperation.addUserServices(servicePackage);
+        
+        
+//        Service servicePackage = new ServicePackageBuilder()
+//                                                         .setReservationID(reservationID)
+//                                                         .setHasWifi(hasWifi)
+//                                                         .setHasSauna(hasSauna)
+//                                                         .setHasHammam(hasHammam)
+//                                                         .setHasPool(hasPool)
+//                                                         .setTotalServicePrice(totalServicePrice)
+//                                                         .buildService();
+        
+        
+        
+     
+        
+        
+        //servicePackage.setServiceInstance(servicePackage);
+        AddUserServicesOperation.addUserServices(Service.getServiceInstance());
         PaymentMenuUI.makeVisible();
         
         String dialogTitle = "Saved Details";
@@ -66,6 +66,11 @@ public class IncludeServicesButton extends JButton implements Command {
             PaymentMenuUI.setCVVNumberField(CreditCard.getCurrentCreditCard().getCVNum());
             PaymentMenuUI.setExpDateField(CreditCard.getCurrentCreditCard().getExpiryDate());
         }
+        
+        //this database call should be moved to payment button
+        //AddUserServicesOperation.addUserServices(servicePackage);
+        System.out.println("Add user services operation");
+        PaymentMenuUI.makeVisible();
         
         } catch (Exception ex){
             ex.printStackTrace();
