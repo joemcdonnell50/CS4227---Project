@@ -16,7 +16,7 @@ public interface Repository {
     
     public abstract void closeStatement() throws SQLException;
     
-    public abstract ResultSet queryStatement(String query);
+    public abstract ResultSet queryDatabaseStatement(String query);
     
     //public abstract ResultSet queryDatabaseUpdate(String query);
     
