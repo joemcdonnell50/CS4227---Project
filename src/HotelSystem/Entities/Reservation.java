@@ -2,7 +2,7 @@ package HotelSystem.Entities;
 
 import java.util.Date;
 
-public class Reservation extends Entity{
+public class Reservation implements Entity{
     
     private int reservation_id;
     private String user_name;
