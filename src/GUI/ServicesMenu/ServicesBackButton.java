@@ -6,7 +6,7 @@
 package GUI.ServicesMenu;
 
 import GUI.Command;
-import GUI.ReservationMenu.ReservationMenuUI;
+import GUI.OptionMenu.OptionsMenuUI;
 import javax.swing.JButton;
 
 /**
@@ -19,7 +19,7 @@ public class ServicesBackButton extends JButton implements Command {
     public void execute() {
         System.out.println("Back Button Pressed");
         //ServicesMenuUI.makeNonVisible();
-        ReservationMenuUI.makeVisible();
+        OptionsMenuUI.makeVisible();
     }
     
 }

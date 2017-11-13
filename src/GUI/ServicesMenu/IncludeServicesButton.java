@@ -10,27 +10,16 @@ import GUI.Command;
 import GUI.ServicesMenu.ServicesMenuUI;
 import HotelSystem.Entities.Service;
 import HotelSystem.PanelOperations.AddServicesOperation;
-import HotelSystem.PanelOperations.AddUserServicesOperation;
 import HotelSystem.Services.ServicePackageBuilder;
 import javax.swing.JButton;
+import GUI.PaymentUI.PaymentMenuUI;
 
 /**
  *
  * @author Liam
  */
 public class IncludeServicesButton extends JButton implements Command {
-    
-    private int reservationID;
-    private int hasWifi;
-    private int hasSauna;
-    private int hasHammam;
-    private int hasPool;
-    private int totalServicePrice;
-    
-    
-    //get values from ui here
-    
-    
+       
     
     @Override
     public void execute() {
@@ -38,6 +27,9 @@ public class IncludeServicesButton extends JButton implements Command {
         
     try{
         
+        
+        
+        /*
         Service servicePackage = new ServicePackageBuilder()
                                                          .setReservationID(reservationID)
                                                          .setHasWifi(hasWifi)
@@ -45,10 +37,18 @@ public class IncludeServicesButton extends JButton implements Command {
                                                          .setHasHammam(hasHammam)
                                                          .setHasPool(hasPool)
                                                          .setTotalServicePrice(totalServicePrice)
-                                                         .getService();
+                                                         .buildService();
+        */
         
         
-        AddUserServicesOperation.addUserServices(servicePackage);
+        
+        
+        
+        //this database call should be moved to payment button
+        //AddUserServicesOperation.addUserServices(servicePackage);
+        System.out.println("Add user services operation");
+        PaymentMenuUI.makeVisible();
+        
         } catch (Exception ex){
             ex.printStackTrace();
         }

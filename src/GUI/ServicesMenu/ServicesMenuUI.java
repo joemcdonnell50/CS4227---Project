@@ -6,7 +6,17 @@
 package GUI.ServicesMenu;
 
 import DatabaseManager.DatabaseOperations;
+import HotelSystem.PanelOperations.AddServicesOperation;
 import GUI.ButtonHandler;
+import HotelSystem.Entities.Service;
+import HotelSystem.Services.ServicePackageBuilder;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,10 +29,21 @@ public class ServicesMenuUI extends javax.swing.JFrame {
      */
     
     private javax.swing.JPanel jPanel1;
+     private javax.swing.JPanel btnPanel;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable1;
     
+    private javax.swing.JButton IncludeServicesButton;
+    private javax.swing.JButton ServicesBackButton;
+
+    
+    
     private static Object[][] rowData;
+    
+    private Boolean sauna = false;
+    private Boolean hammam = false;
+    private Boolean pool = false;
+    private double totalServicePrice = 0;
     
     
     public ServicesMenuUI(Object[][] data) {
@@ -38,10 +59,11 @@ public class ServicesMenuUI extends javax.swing.JFrame {
             }
         }
         initComponents();
+        System.out.println("After init comp");
         this.setLocationRelativeTo(null);
     }
-        
-        
+
+               
         //System.out.println("Row Data......");
         //System.out.println(rowData[1][1]);
         
@@ -52,6 +74,33 @@ public class ServicesMenuUI extends javax.swing.JFrame {
     
     public void makeNonVisible(){
         this.setVisible(false);
+    }
+    
+    public double getTotalServicePrice(){
+        return totalServicePrice;
+    }
+    
+    private void calculateServicePrice() {
+        
+        for(int i=0;i<jTable1.getRowCount();i++)
+              {
+ 
+               Boolean checked = Boolean.valueOf(jTable1.getValueAt(i, 2).toString());
+               
+                if(checked)
+                {
+                    System.out.println("TotalServicePrice" + totalServicePrice);
+                    
+                    totalServicePrice = Integer.parseInt(jTable1.getValueAt(i, 1).toString()) + totalServicePrice;
+                    System.out.println("MAde it to if");
+                    System.out.println(totalServicePrice);
+                }
+              }
+        sauna = Boolean.valueOf(jTable1.getValueAt(0, 2).toString());
+        hammam = Boolean.valueOf(jTable1.getValueAt(1, 2).toString());
+        pool = Boolean.valueOf(jTable1.getValueAt(2, 2).toString());
+        
+        AddServicesOperation.createServicesPackage(sauna, hammam, pool, totalServicePrice);
     }
     
 
@@ -71,23 +120,36 @@ public class ServicesMenuUI extends javax.swing.JFrame {
         IncludeServicesButton = new javax.swing.JButton();
         jTable1 = new javax.swing.JTable();
         */
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new JPanel(new BorderLayout());
+        btnPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         
-
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         IncludeServicesButton = new IncludeServicesButton();
         IncludeServicesButton.setFont(new java.awt.Font("Dialog", 0, 14));
         IncludeServicesButton.setText("Include Services");
         
+        ServicesBackButton = new ServicesBackButton();
+        ServicesBackButton.setFont(new java.awt.Font("Dialog", 0, 14));
+        ServicesBackButton.setText("Back");
+        
+        
+        
+        
+        
+        
         
         ButtonHandler vf = new ButtonHandler();
         IncludeServicesButton.addActionListener(vf);
-
         
+        ServicesBackButton.addActionListener(vf);
+
         System.out.println("Got This far2");
+        //DefaultTableModel model =
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            
             
             rowData,
             new String [] {
@@ -109,10 +171,20 @@ public class ServicesMenuUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        System.out.println("End of table creation");
-        jScrollPane1.setViewportView(jTable1);
-        System.out.println("End of table creationwe");
 
+        jScrollPane1.setViewportView(jTable1);
+        System.out.println("After Table filling");
+
+        
+        //Calculate service price on button
+        
+        
+        
+        
+        
+      
+       
+        
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -121,7 +193,9 @@ public class ServicesMenuUI extends javax.swing.JFrame {
                 .addGap(186, 186, 186)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                 .addComponent(IncludeServicesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                //.addGap(186, 186, 186) 
+                .addComponent(ServicesBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+//.addGap(186, 186, 186) 
                 .addContainerGap(185, Short.MAX_VALUE))    
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,7 +205,10 @@ public class ServicesMenuUI extends javax.swing.JFrame {
                 //.addContainerGap(272, Short.MAX_VALUE)
                    
                     .addGap(0,0,0)
+                    
                 .addComponent(IncludeServicesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ServicesBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -155,10 +232,26 @@ public class ServicesMenuUI extends javax.swing.JFrame {
         );
 
         pack(); 
+        
+        
+        IncludeServicesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent vf) {
+                System.out.println("Action listener for includes services button");
+              calculateServicePrice();
+              
+              System.out.println("end of for");
+
+            }
+
+            
+        });
+        
+
     }          
                          
     
-    private javax.swing.JButton IncludeServicesButton;
+    
     //private javax.swing.JPanel jPanel1;
     // End of variables declaration  
     

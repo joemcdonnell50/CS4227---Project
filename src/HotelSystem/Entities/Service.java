@@ -10,14 +10,16 @@ public class Service extends Entity{
 
 
     private int reservationID;
-    private int hasWifi;
-    private int hasSauna;
-    private int hasHammam;
-    private int hasPool;
+    private boolean hasWifi;
+    private boolean hasSauna;
+    private boolean hasHammam;
+    private boolean hasPool;
     private int totalServicePrice;
     
     
-    public Service(int reservationID, int hasWifi, int hasSauna, int hasHammam, int hasPool, int totalServicePrice){
+    
+    
+    public Service(int reservationID, boolean hasWifi, boolean hasSauna, boolean hasHammam, boolean hasPool, int totalServicePrice){
         super();
         this.reservationID = reservationID;
         this.hasWifi = hasWifi;
@@ -31,24 +33,28 @@ public class Service extends Entity{
         return reservationID;
     }
 
-    public int getHasWifi() {
+    public boolean getHasWifi() {
         return hasWifi;
     }
 
-    public int getHasSauna() {
+    public boolean getHasSauna() {
         return hasSauna;
     }
 
-    public int getHasHammam() {
+    public boolean getHasHammam() {
         return hasHammam;
     }
 
-    public int getHasPool() {
+    public boolean getHasPool() {
         return hasPool;
     }
     
     public int getTotalServicePrice() {
-        return hasPool;
+        return totalServicePrice;
+    }
+    
+    public String toString(){
+        return "Service wifi" + hasWifi + ",sauna" + hasSauna + "hammam" + hasHammam + "Pool" + hasPool;
     }
     
     

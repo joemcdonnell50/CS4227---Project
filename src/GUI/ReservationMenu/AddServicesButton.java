@@ -7,14 +7,14 @@ package GUI.ReservationMenu;
 
 import DatabaseManager.DatabaseOperations;
 import GUI.Command;
-<<<<<<< HEAD
+
 import GUI.ServicesMenu.ServicesMenuUI;
-import GUI.UserReservations.UserReservationsUI;
-=======
+
 import GUI.PaymentUI.PaymentMenuUI;
+import GUI.ServicesMenu.ServiceUI;
 
 
->>>>>>> 7d5fc780408548f23699e912d6cee8e9f2d49fa0
+
 import HotelSystem.PanelOperations.MakePaymentOperation;
 
 import HotelSystem.PanelOperations.MakeReservationOperation;
@@ -43,25 +43,9 @@ public class AddServicesButton extends JButton implements Command {
         }
        
        ServicesMenuUI ui = new ServicesMenuUI(rowData);
+       System.out.println("After UI Creation");
        ui.makeVisible();
     }
     
 }
-/*
-        try {
-            MakeReservationOperation.makeReservation(ReservationMenuUI.getReservationMenuUIInstance());
-            JOptionPane.showMessageDialog(null, "Reservation Made!"); 
-            MakePaymentOperation makepaymentOp = new MakePaymentOperation();
-<<<<<<< HEAD
-            System.out.println("ducks");
-            
-            makepaymentOp.CalculateCost();
-            ServicesMenuUI.makeVisible();
-=======
-            makepaymentOp.CalculateCost();
-            PaymentMenuUI.makeVisible();
->>>>>>> 7d5fc780408548f23699e912d6cee8e9f2d49fa0
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        */
+
