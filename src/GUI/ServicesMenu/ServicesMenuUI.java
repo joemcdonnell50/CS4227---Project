@@ -40,9 +40,9 @@ public class ServicesMenuUI extends javax.swing.JFrame {
     
     private static Object[][] rowData;
     
-    private Boolean sauna = false;
-    private Boolean hammam = false;
-    private Boolean pool = false;
+    private boolean sauna = false;
+    private boolean hammam = false;
+    private boolean pool = false;
     private double totalServicePrice = 0;
     
     
@@ -82,12 +82,13 @@ public class ServicesMenuUI extends javax.swing.JFrame {
     
     private void calculateServicePrice() {
         
-        for(int i=0;i<jTable1.getRowCount();i++)
+        for(int i=0;i<jTable1.getModel().getRowCount();i++)
               {
- 
-               Boolean checked = Boolean.valueOf(jTable1.getValueAt(i, 2).toString());
                
-                if(checked)
+               String checked = jTable1.getModel().getValueAt(i, 2).toString();
+               boolean check = Boolean.valueOf(checked);
+               
+                if(check)
                 {
                     System.out.println("TotalServicePrice" + totalServicePrice);
                     
@@ -96,9 +97,9 @@ public class ServicesMenuUI extends javax.swing.JFrame {
                     System.out.println(totalServicePrice);
                 }
               }
-        sauna = Boolean.valueOf(jTable1.getValueAt(0, 2).toString());
-        hammam = Boolean.valueOf(jTable1.getValueAt(1, 2).toString());
-        pool = Boolean.valueOf(jTable1.getValueAt(2, 2).toString());
+        sauna = Boolean.valueOf(jTable1.getValueAt(1, 2).toString());
+        hammam = Boolean.valueOf(jTable1.getValueAt(2, 2).toString());
+        pool = Boolean.valueOf(jTable1.getValueAt(3, 2).toString());
         
         AddServicesOperation.createServicesPackage(sauna, hammam, pool, totalServicePrice);
     }

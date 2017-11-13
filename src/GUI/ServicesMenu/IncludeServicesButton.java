@@ -52,7 +52,7 @@ public class IncludeServicesButton extends JButton implements Command {
         
         
         //servicePackage.setServiceInstance(servicePackage);
-        AddUserServicesOperation.addUserServices(Service.getServiceInstance());
+        //AddUserServicesOperation.addUserServices(Service.getServiceInstance());
         PaymentMenuUI.makeVisible();
         
         String dialogTitle = "Saved Details";

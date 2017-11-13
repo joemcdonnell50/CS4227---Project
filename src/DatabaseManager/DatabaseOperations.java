@@ -107,13 +107,14 @@ public class DatabaseOperations implements AutoCloseable{
             rowCount++;
         }
         System.out.println("row count" + rowCount);
-        Object[][] rowData = new Object[rowCount][2];
+        Object[][] rowData = new Object[rowCount][3];
         resultSet.beforeFirst();
         rowCount = 0;
         while (resultSet.next()){
             System.out.println(resultSet.getString("service_name"));
             rowData[rowCount][0] = resultSet.getString("service_name");
             rowData[rowCount][1] = resultSet.getString("service_price");
+            rowData[rowCount][2] = false;
             rowCount++;
         }
         

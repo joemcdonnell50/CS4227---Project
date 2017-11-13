@@ -6,53 +6,55 @@
 package HotelSystem.Services;
 
 import HotelSystem.Entities.Service;
-
+import HotelSystem.Entities.Reservation;
 /**
  *
  * @author Liam
  */
 public class ServicePackageBuilder {
     private int reservationID;
-    private int hasWifi;
-    private int hasSauna;
-    private int hasHammam;
-    private int hasPool;
+    private boolean hasWifi;
+    private boolean hasSauna;
+    private boolean hasHammam;
+    private boolean hasPool;
     private int totalServicePrice;
 
     public ServicePackageBuilder setReservationID(int reservationID) {
-        //need to get the current reservation id here
         this.reservationID = reservationID;
         return this;
     }
 
-    public ServicePackageBuilder setHasWifi(int hasWifi) {
-        this.hasWifi = hasWifi;
+    public ServicePackageBuilder setHasWifi(boolean wifi) {
+        hasWifi = wifi;
+        System.out.println("Wifi " + hasWifi);
         return this;
     }
 
-    public ServicePackageBuilder setHasSauna(int hasSauna) {
-        this.hasSauna = hasSauna;
+    public ServicePackageBuilder setHasSauna(boolean sauna) {
+        hasSauna = sauna;
+        System.out.println("hasSauna " + hasSauna);
         return this;
     }
 
-    public ServicePackageBuilder setHasHammam(int hasHammam) {
-        this.hasHammam = hasHammam;
+    public ServicePackageBuilder setHasHammam(boolean hammam) {
+        hasHammam = hammam;
+         System.out.println("Hammam " + hasHammam);
         return this;
     }
 
-    public ServicePackageBuilder setHasPool(int hasPool) {
-        this.hasPool = hasPool;
+    public ServicePackageBuilder setHasPool(boolean pool) {
+        hasPool = pool;
+        System.out.println("Pool " + hasPool);
         return this;
     }
     
     public ServicePackageBuilder setTotalServicePrice(int totalServicePrice) {
-        this.hasPool = hasPool;
+        totalServicePrice = totalServicePrice;
+        System.out.println("totalServicePrice " + totalServicePrice);
         return this;
     }
-    
-    
-    
-    public Service getService(){
+       
+    public Service buildService(){
        return new Service(reservationID, hasWifi, hasSauna, hasHammam, hasPool, totalServicePrice); 
     }
 
