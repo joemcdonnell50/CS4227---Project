@@ -1,6 +1,7 @@
 package HotelSystem.PanelOperations;
 
 import DatabaseManager.DatabaseOperations;
+import DatabaseManager.Factory.EntityFactory;
 import GUI.PaymentUI.PaymentMenuUI;
 import HotelSystem.Entities.CreditCard;
 import HotelSystem.Entities.User;
@@ -24,6 +25,14 @@ public class CreditCardOperations {
         
     }
     
+    public static void getCreditCardDetails() throws Exception{
+        EntityFactory factory = EntityFactory.getEntityFactory("creditcard");
+        
+        CreditCard creditCard = (CreditCard) factory.createEntity(String.valueOf(User.getLoggedUser().getUser_id()));
+        
+        creditCard.setCurrentCreditCard(creditCard);
+    }
+    
     public static void insertCreditCardDetails(PaymentMenuUI paymentUI) throws Exception{
         CreditCard creditcard = new CreditCard();
         creditcard.setCreditCardNum(paymentUI.getCardNumberField());
@@ -36,6 +45,8 @@ public class CreditCardOperations {
             ops.insertUserCreditCardDetails(creditcard, User.getLoggedUser());
         }
     }
+    
+    
 
     //encrypt string before being sent to database
     public String encryptCard(String StringtoEncrpyt) {

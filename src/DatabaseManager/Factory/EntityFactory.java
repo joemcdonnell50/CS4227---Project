@@ -1,6 +1,7 @@
 package DatabaseManager.Factory;
 
 import DatabaseManager.DatabaseConfig;
+import DatabaseManager.Factory.Entity.CreditCardFactory;
 import DatabaseManager.Repository.Repository;
 import DatabaseManager.Factory.RepositoryFactory;
 import DatabaseManager.Factory.Entity.UserFactory;
@@ -20,6 +21,9 @@ public abstract class EntityFactory {
         }
         else if (type.equalsIgnoreCase("userreservationdetails")){
             return new UserReservationDetailsFactory();
+        }
+        else if (type.equalsIgnoreCase("creditcard")){
+            return new CreditCardFactory();
         }
         else{
             return null;
