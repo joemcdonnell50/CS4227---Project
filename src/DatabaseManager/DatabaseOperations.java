@@ -49,21 +49,6 @@ public class DatabaseOperations implements AutoCloseable{
         repository.executeStatement(query);
     }
     
-    public Entity getUserCreditCardDetails(User user) throws Exception{
-        query = "SELECT name_on_card, credit_card_number, cvv, expiry FROM User " +
-                "WHERE user_id =" + user.getUser_id() + ";";
-        resultSet = repository.queryDatabaseStatement(query);
-        
-        while (resultSet.next()){
-            user.setName_on_card(resultSet.getString("name_on_card"));
-            user.setCredit_card_number(resultSet.getString("credit_card_number"));
-            user.setCvv(Integer.valueOf(resultSet.getString("cvv")));
-            user.setExpiry(resultSet.getString("expiry"));
-        }
-        
-        return user;
-    }
-    
     
     // Reservation
     public Entity insertReservation(Reservation reservation) throws Exception{
