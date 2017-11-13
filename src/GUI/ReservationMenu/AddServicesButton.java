@@ -7,14 +7,9 @@ package GUI.ReservationMenu;
 
 import DatabaseManager.DatabaseOperations;
 import GUI.Command;
-<<<<<<< HEAD
 import GUI.ServicesMenu.ServicesMenuUI;
 import GUI.UserReservations.UserReservationsUI;
-=======
 import GUI.PaymentUI.PaymentMenuUI;
-
-
->>>>>>> 7d5fc780408548f23699e912d6cee8e9f2d49fa0
 import HotelSystem.PanelOperations.MakePaymentOperation;
 
 import HotelSystem.PanelOperations.MakeReservationOperation;
