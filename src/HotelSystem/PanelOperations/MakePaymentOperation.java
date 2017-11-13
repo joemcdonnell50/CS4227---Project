@@ -25,8 +25,7 @@ public class MakePaymentOperation {
     private double total;
     
     public static void makePaymentOperation() throws Exception {
-        //Payment payment = new Payment();
-       // payment.setConfirmPaid(paymentUI.getConfirmPaid());
+        
        
     }
     public double getTotal() {
