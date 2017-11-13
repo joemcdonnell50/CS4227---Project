@@ -1,7 +1,7 @@
 package HotelSystem.Entities;
 
 
-public class User extends Entity{
+public class User implements Entity{
     
     private int user_id;
     private String user_name;

@@ -2,7 +2,7 @@
 package HotelSystem.Entities;
 
 
-public class UserReservationDetails extends Entity{
+public class UserReservationDetails implements Entity{
     
     private int user_id;
     private int reservation_id;

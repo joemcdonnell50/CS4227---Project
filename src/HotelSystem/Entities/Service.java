@@ -1,7 +1,7 @@
 package HotelSystem.Entities;
 
 
-public class Service extends Entity{
+public class Service implements Entity{
     /*
     private int service_id;
     private String service_name;
