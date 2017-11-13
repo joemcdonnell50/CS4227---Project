@@ -23,15 +23,14 @@ import static java.time.temporal.ChronoUnit.DAYS;
  */
 public class MakePaymentOperation {
     private double total;
-<<<<<<< HEAD
     
     public static void makePaymentOperation() throws Exception {
         
        
     }
-=======
+
     //get total bill
->>>>>>> b4004242907ae4494fe8b50008f8c56f139b9267
+
     public double getTotal() {
         return total;
     }
