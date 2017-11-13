@@ -6,6 +6,7 @@
 package HotelSystem.PanelOperations;
 
 //import HotelSystem.Entities.Payment;
+import HotelSystem.Entities.Receipt;
 import HotelSystem.Entities.Reservation;
 import HotelSystem.Entities.User;
 import HotelSystem.Payment.Context;
@@ -14,7 +15,6 @@ import HotelSystem.Payment.Discount20;
 import HotelSystem.Payment.Discount30;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.ResolverStyle;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
@@ -23,25 +23,39 @@ import static java.time.temporal.ChronoUnit.DAYS;
  */
 public class MakePaymentOperation {
     private double total;
+<<<<<<< HEAD
     
     public static void makePaymentOperation() throws Exception {
         
        
     }
+=======
+    //get total bill
+>>>>>>> b4004242907ae4494fe8b50008f8c56f139b9267
     public double getTotal() {
         return total;
     }
 
-   
+   //set total bill
     public void setTotal(double total) {
         this.total = total;
     }
-
+   //Check what price that room is 
     public double GetPriceOfRoom(String hotel, String Roomtype) {
-        double PricePerNight = 30;
+        double PricePerNight =0;
+        if(Roomtype.equals("Standard")){
+            PricePerNight = 30;
+        }else if(Roomtype.equals("Deluxe")){
+            PricePerNight = 60;
+        }
+        else{
+            PricePerNight = 90;
+        }
         return PricePerNight;
     }
+    //calculate cost of hotel stay
     public void CalculateCost() {
+        Receipt receipt = new Receipt();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate Adate = LocalDate.parse(Reservation.getReservationInstance().getArrival_date(), formatter); 
         LocalDate Cdate = LocalDate.parse(Reservation.getReservationInstance().getCheckout_date(), formatter);
@@ -60,28 +74,32 @@ public class MakePaymentOperation {
         double WeekendCost = ((PricePerNight / 100.0) * 25);
         double Cost = ((NumberofNight * PricePerNight) * NumberOfGuests) + (WeekendCost * daysOnWeekend) + servicePrice;
         int LoyaltyLevel = 1;
-        User user = new User();
+        User user = User.getLoggedUser();
         LoyaltyLevel =user.getLoyalty_level();
         switch (LoyaltyLevel) {
             case 1:
                 Context context = new Context(new Discount10());
                 Cost = context.executeStrategy(Cost);
+                receipt.setDiscount(10);
                 break;
             case 2:
                 Context contextB = new Context(new Discount20());
                 Cost =contextB.executeStrategy(Cost);
+                receipt.setDiscount(20);
                 break;
             case 3:
                 Context contextC = new Context(new Discount30());
                 Cost =contextC.executeStrategy(Cost);
+                receipt.setDiscount(30);
                 break;
             default:
                 break;
         }
         setTotal(Cost);
-       System.out.println(Adate +" "+ Cdate+ " " +NumberofNight+ " " +Cost);
-
+        receipt.setTotal(Cost);
+        receipt.setCurrentReceiptInstance(receipt);
     }
+    //add to current bill
     public void addToBill(double addedvalue) {
         this.total += addedvalue;
 

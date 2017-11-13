@@ -1,8 +1,10 @@
 package HotelSystem.Entities;
 
+
 import java.util.Date;
 
 public class Reservation implements Entity{
+
     
     private int reservation_id;
     private String user_name;
@@ -13,6 +15,22 @@ public class Reservation implements Entity{
     private String checkout_date;
 
     private String services;
+
+    public String getServices() {
+        return services;
+    }
+
+    public void setServices(String services) {
+        this.services = services;
+    }
+
+    public static Reservation getCurrentReservation() {
+        return currentReservation;
+    }
+
+    public static void setCurrentReservation(Reservation currentReservation) {
+        Reservation.currentReservation = currentReservation;
+    }
 
 
     
@@ -49,9 +67,7 @@ public class Reservation implements Entity{
         this.checkout_date = checkout_date;
     }
     
-    public void setServices(String services){
-        
-    }
+    
 
     public int getReservation_id() {
         return reservation_id;
