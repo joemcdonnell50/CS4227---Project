@@ -5,7 +5,8 @@
  */
 package HotelSystem.Receipt;
 
-import HotelSystem.Entities.UserReservationDetails;
+import HotelSystem.Entities.Reservation;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,14 +20,9 @@ public class ReceiptToDiscountReceiptAdapter extends DiscountedReceipt implement
     }
 
     @Override
-    public void formatReceipt(UserReservationDetails Details) {
-         String Receipt = String.format("Hello " + Details.getUser_id() + "\n"
-                + "Receipt for reservation number " + Details.getReservation_id() + "\n"
-                + "Hotel : " + "\t" + Details.getHotel() + "\n"
-                + "Roomtype : " + "\t" + Details.getRoomType() + "\n"
-                + "Number of Guests : " + "\t" + Details.getNumberOfGuests()+ "\n"
-                + "Date of Arrival : " + "\t" + Details.getArrival_date() + "\n"
-                + "Check out Date : " + "\t" + Details.getCheckout_date() + "\n"
-                + "Cost of Services :" + "\t" + Details.getServicePrice() + "\n"
-                + "Your total cost is " + "\t" + Details.getPrice()+ AddToReceipt());   }
-    }
+    public void PrintReceipt(Reservation reservation) {
+        receipt.FormatAndAddToReceipt(reservation);
+         }
+
+}
+    

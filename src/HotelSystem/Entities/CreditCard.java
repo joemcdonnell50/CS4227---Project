@@ -5,7 +5,7 @@ package HotelSystem.Entities;
   *
   * @author Owner
   */
- public class CreditCard {
+ public class CreditCard extends Entity{
  
      private String NameOnCard;
      private String creditCardNum;

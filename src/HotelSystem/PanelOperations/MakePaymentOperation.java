@@ -6,6 +6,7 @@
 package HotelSystem.PanelOperations;
 
 //import HotelSystem.Entities.Payment;
+import HotelSystem.Entities.Receipt;
 import HotelSystem.Entities.Reservation;
 import HotelSystem.Entities.User;
 import HotelSystem.Payment.Context;
@@ -43,6 +44,7 @@ public class MakePaymentOperation {
         return PricePerNight;
     }
     public void CalculateCost() {
+        Receipt receipt = new Receipt();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate Adate = LocalDate.parse(Reservation.getReservationInstance().getArrival_date(), formatter); 
         LocalDate Cdate = LocalDate.parse(Reservation.getReservationInstance().getCheckout_date(), formatter);
@@ -61,25 +63,30 @@ public class MakePaymentOperation {
         double WeekendCost = ((PricePerNight / 100.0) * 25);
         double Cost = ((NumberofNight * PricePerNight) * NumberOfGuests) + (WeekendCost * daysOnWeekend) + servicePrice;
         int LoyaltyLevel = 1;
-        User user = new User();
+        User user = User.getLoggedUser();
         LoyaltyLevel =user.getLoyalty_level();
         switch (LoyaltyLevel) {
             case 1:
                 Context context = new Context(new Discount10());
                 Cost = context.executeStrategy(Cost);
+                receipt.setDiscount(10);
                 break;
             case 2:
                 Context contextB = new Context(new Discount20());
                 Cost =contextB.executeStrategy(Cost);
+                receipt.setDiscount(20);
                 break;
             case 3:
                 Context contextC = new Context(new Discount30());
                 Cost =contextC.executeStrategy(Cost);
+                receipt.setDiscount(30);
                 break;
             default:
                 break;
         }
         setTotal(Cost);
+        receipt.setTotal(Cost);
+        receipt.setCurrentReceiptInstance(receipt);
        System.out.println(Adate +" "+ Cdate+ " " +NumberofNight+ " " +Cost);
 
     }

@@ -19,6 +19,7 @@ import HotelSystem.PanelOperations.MakePaymentOperation;
 
 import HotelSystem.PanelOperations.MakeReservationOperation;
 import HotelSystem.PanelOperations.ViewReservationsOperation;
+import HotelSystem.Entities.Receipt;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -34,7 +35,7 @@ public class AddServicesButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        
+/*        
        try(DatabaseOperations dbOps = new DatabaseOperations()){
            
         rowData = dbOps.getServicesData();
@@ -47,21 +48,18 @@ public class AddServicesButton extends JButton implements Command {
     }
     
 }
-/*
+*/
         try {
             MakeReservationOperation.makeReservation(ReservationMenuUI.getReservationMenuUIInstance());
             JOptionPane.showMessageDialog(null, "Reservation Made!"); 
             MakePaymentOperation makepaymentOp = new MakePaymentOperation();
-<<<<<<< HEAD
-            System.out.println("ducks");
-            
             makepaymentOp.CalculateCost();
-            ServicesMenuUI.makeVisible();
-=======
+           // ServicesMenuUI.makeVisible();
             makepaymentOp.CalculateCost();
             PaymentMenuUI.makeVisible();
->>>>>>> 7d5fc780408548f23699e912d6cee8e9f2d49fa0
+
         } catch (Exception ex) {
             System.out.println(ex);
         }
-        */
+    }
+}

@@ -6,6 +6,7 @@
 package GUI.PaymentUI;
 
 import GUI.Command;
+import GUI.ReservationMenu.ReservationMenuUI;
 import javax.swing.JButton;
 
 /**
@@ -16,7 +17,8 @@ public class CancelPaymentButton extends JButton implements Command {
 
     @Override
     public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PaymentMenuUI.makeNonVisible();
+        ReservationMenuUI.makeVisible();
     }
     
 }
