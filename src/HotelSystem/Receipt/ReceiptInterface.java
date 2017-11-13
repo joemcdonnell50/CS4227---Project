@@ -5,14 +5,14 @@
  */
 package HotelSystem.Receipt;
 
-import HotelSystem.Entities.UserReservationDetails;
+import HotelSystem.Entities.Reservation;
 
 /**
  *
  * @author Owner
  */
 public interface ReceiptInterface {
-    public void formatReceipt(UserReservationDetails Details);
-        
+    public void PrintReceipt(Reservation reservation);
+    
     
 }
