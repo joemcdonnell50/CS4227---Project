@@ -72,6 +72,11 @@ public abstract class SQLRepository implements Repository {
         }
         return true;
     }
+    
+    @Override
+    public ResultSet queryStatement(String query){
+        return null;
+    }
 
     public ResultSet queryDatabaseStatement(String query){
         ResultSet rs = null;

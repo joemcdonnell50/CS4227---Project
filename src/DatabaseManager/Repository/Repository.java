@@ -10,15 +10,15 @@ import java.sql.SQLException;
 
 public interface Repository {
     
-    public abstract Connection getConnection() throws SQLException, ClassNotFoundException;
+    public abstract Connection getConnection() throws Exception;
     
     public abstract void closeConnection();
     
     public abstract void closeStatement() throws SQLException;
     
-    public abstract ResultSet queryDatabaseStatement(String query);
+    public abstract ResultSet queryStatement(String query);
     
-    public abstract ResultSet queryDatabaseUpdate(String query);
+    //public abstract ResultSet queryDatabaseUpdate(String query);
     
     public abstract void executeStatement(String query);
     

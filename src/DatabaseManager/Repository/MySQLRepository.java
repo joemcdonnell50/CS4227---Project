@@ -2,6 +2,7 @@
 package DatabaseManager.Repository;
 
 import DatabaseManager.DatabaseConfig;
+import java.sql.ResultSet;
 
 
 public class MySQLRepository extends SQLRepository {
