@@ -3,6 +3,7 @@ package DatabaseManager;
 
 import DatabaseManager.Factory.RepositoryFactory;
 import DatabaseManager.Repository.Repository;
+import HotelSystem.Entities.CreditCard;
 import HotelSystem.Entities.Entity;
 import HotelSystem.Entities.User;
 import HotelSystem.Entities.Reservation;
@@ -25,20 +26,59 @@ public class DatabaseOperations implements AutoCloseable{
     }
     
     // User
-    public void insertUser(User user){
+    public Entity insertUser(User user) throws Exception{
         query = "INSERT INTO User (user_name, password, first_name, last_name, email_address, loyalty_level)" + 
                 "VALUES('" + user.getUser_name() + "','" +  user.getPassword() + "','" + user.getFirst_name() + "','" + 
                 user.getLast_name() + "','" + user.getEmail_address() + "','0');";
         repository.executeStatement(query);
+        
+        query = "SELECT user_id, loyalty_level FROM User WHERE username = '" + user.getUser_name() + "' and password = '" + user.getPassword() + "';";
+        resultSet = repository.queryDatabaseStatement(query);
+        while(resultSet.next()){
+            user.setUser_id(Integer.valueOf(resultSet.getString("user_id")));
+            user.setLoyalty_level(Integer.valueOf(resultSet.getString("loyalty_level")));
+        }
+        
+        return user;
+    }
+    
+    public void insertUserCreditCardDetails(CreditCard creditCard, User user){
+        query = "INSERT INTO User (name_on_card, credit_card_number, cvv, expiry)" + 
+                "VALUES('" + creditCard.getNameOnCard() + "','" + creditCard.getCreditCardNum() + "','" + creditCard.getCVNum() +
+                "','" + creditCard.getExpiryDate() + "') " + "WHERE user_id = " + user.getUser_id() + ";";
+        repository.executeStatement(query);
+    }
+    
+    public Entity getUserCreditCardDetails(User user) throws Exception{
+        query = "SELECT name_on_card, credit_card_number, cvv, expiry FROM User " +
+                "WHERE user_id =" + user.getUser_id() + ";";
+        resultSet = repository.queryDatabaseStatement(query);
+        
+        while (resultSet.next()){
+            user.setName_on_card(resultSet.getString("name_on_card"));
+            user.setCredit_card_number(resultSet.getString("credit_card_number"));
+            user.setCvv(Integer.valueOf(resultSet.getString("cvv")));
+            user.setExpiry(resultSet.getString("expiry"));
+        }
+        
+        return user;
     }
     
     
     // Reservation
-    public void insertReservation(Reservation reservation){
+    public Entity insertReservation(Reservation reservation) throws Exception{
         query = "INSERT INTO Reservation (user_name, hotel_name, room_type, number_of_guests, arrival_date, checkout_date) " + 
                 "VALUES('" + reservation.getUser_name() + "','" + reservation.getHotel_name() + "','" + reservation.getRoom_type() + 
                 "','" + reservation.getNumber_of_guests() + "','" + reservation.getArrival_date() + "','" + reservation.getCheckout_date() + "');";
         repository.executeStatement(query);
+        
+        query = "SELECT reservation_id FROM Reservation WHERE user_name = '" + reservation.getUser_name() + "' and arrival_date = '" + reservation.getArrival_date() + "' and checkout_date = '" + reservation.getCheckout_date() + "';";
+        resultSet = repository.queryDatabaseStatement(query);
+        while(resultSet.next()){
+            reservation.setReservation_id(Integer.valueOf(resultSet.getString("reservation_id")));
+        }
+        
+        return reservation;
     }
     
     public void insertUserServices(Service servicePackage){
@@ -100,11 +140,12 @@ public class DatabaseOperations implements AutoCloseable{
     }
     
     // UserReservationDetails
-    public void insertUserReservationDetails(UserReservationDetails userReservationDetails){
-        query = "INSERT INTO UserReservationDetails (user_id, reservation_id, arrival_date, checkout_date, services, tours, price) " + 
-                "VALUES('" + userReservationDetails.getUser_id() + "," + userReservationDetails.getReservation_id() + ",'" + userReservationDetails.getArrival_date() + 
-                "','" + userReservationDetails.getCheckout_date() + "','" + userReservationDetails.getServices() + 
-                "','" + userReservationDetails.getTours() + "'," + userReservationDetails.getPrice() + "');";
+    public void insertUserReservationDetails(User user, Reservation reservation, Service services, double total_price){
+        query = "INSERT INTO UserReservationDetails (user_id, hotel_name, room_type, arrival_date, checkout_data, services, services_price, price) " +
+                "VALUES('" + user.getUser_id() + "','" + reservation.getHotel_name() + "','" + reservation.getRoom_type() + "','" + 
+                reservation.getArrival_date() + "','" + reservation.getCheckout_date() + "','" + services.toString() + "','" + services.getTotalServicePrice() +
+                "','" + total_price + "';";
+        
         repository.executeStatement(query);
     }
 
