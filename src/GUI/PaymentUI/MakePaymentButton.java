@@ -5,14 +5,11 @@ import GUI.OptionMenu.OptionsMenuUI;
 import GUI.ReservationMenu.ReservationMenuUI;
 import HotelSystem.Entities.Reservation;
 import HotelSystem.Entities.User;
-import HotelSystem.Entities.UserReservationDetails;
 import HotelSystem.PanelOperations.CreditCardOperations;
 import HotelSystem.Receipt.DiscountedReceipt;
 import HotelSystem.Receipt.StandardReceipt;
-import HotelSystem.Receipt.ReceiptInterface;
 import HotelSystem.Receipt.ReceiptToDiscountReceiptAdapter;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,14 +21,16 @@ public class MakePaymentButton extends JButton implements Command {
 
     public void execute() {
         try {
+            //create new creditcard operation
             CreditCardOperations creditcard = new CreditCardOperations();
+            //send UI instance
             creditcard.CreditCard(PaymentMenuUI.getPaymentMenuUIInstance());
             boolean ValidCard;
             ValidCard = creditcard.isCreditCardValid();
             if (ValidCard) {
-                int LoyaltyLevel = 1;
+                int LoyaltyLevel;
                 User user = User.getLoggedUser();
-                LoyaltyLevel =user.getLoyalty_level();
+                LoyaltyLevel = user.getLoyalty_level();
                 Reservation reservation = Reservation.getReservationInstance();
                 if (LoyaltyLevel > 0) {
                     ReceiptToDiscountReceiptAdapter adapter = new ReceiptToDiscountReceiptAdapter(new DiscountedReceipt());
@@ -42,7 +41,7 @@ public class MakePaymentButton extends JButton implements Command {
                 }
                 PaymentMenuUI.makeNonVisible();
                 ReservationMenuUI.makeNonVisible();
-                OptionsMenuUI.makeNonVisible();
+                OptionsMenuUI.makeVisible();
             }
         } catch (Exception ex) {
             System.out.println(ex);

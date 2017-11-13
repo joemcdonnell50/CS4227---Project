@@ -15,7 +15,6 @@ import HotelSystem.Payment.Discount20;
 import HotelSystem.Payment.Discount30;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.ResolverStyle;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
@@ -24,25 +23,29 @@ import static java.time.temporal.ChronoUnit.DAYS;
  */
 public class MakePaymentOperation {
     private double total;
-    
-    public static void makePaymentOperation() throws Exception {
-        //Payment payment = new Payment();
-       // payment.setConfirmPaid(paymentUI.getConfirmPaid());
-       
-    }
+    //get total bill
     public double getTotal() {
         return total;
     }
 
-   
+   //set total bill
     public void setTotal(double total) {
         this.total = total;
     }
-
+   //Check what price that room is 
     public double GetPriceOfRoom(String hotel, String Roomtype) {
-        double PricePerNight = 30;
+        double PricePerNight =0;
+        if(Roomtype.equals("Standard")){
+            PricePerNight = 30;
+        }else if(Roomtype.equals("Deluxe")){
+            PricePerNight = 60;
+        }
+        else{
+            PricePerNight = 90;
+        }
         return PricePerNight;
     }
+    //calculate cost of hotel stay
     public void CalculateCost() {
         Receipt receipt = new Receipt();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -87,9 +90,8 @@ public class MakePaymentOperation {
         setTotal(Cost);
         receipt.setTotal(Cost);
         receipt.setCurrentReceiptInstance(receipt);
-       System.out.println(Adate +" "+ Cdate+ " " +NumberofNight+ " " +Cost);
-
     }
+    //add to current bill
     public void addToBill(double addedvalue) {
         this.total += addedvalue;
 

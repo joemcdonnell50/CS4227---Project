@@ -15,8 +15,9 @@ import javax.xml.bind.DatatypeConverter;
  */
 public class CreditCardOperations {
 
+    //scrape values from UI 
     public static void CreditCard(PaymentMenuUI paymentUI) throws Exception {
-
+        //set setters in CreditCard Entity and set instance
         CreditCard creditcard = new CreditCard();
         creditcard.setCreditCardNum(paymentUI.getCardNumberField());
         creditcard.setCVNum(paymentUI.getCVVNumberField());
@@ -25,6 +26,7 @@ public class CreditCardOperations {
         creditcard.setCreditCardInstance(creditcard);
     }
 
+    //encrypt string before being sent to database
     public String encryptCard(String StringtoEncrpyt) {
         try {
             byte[] EncodedString = StringtoEncrpyt.getBytes("UTF-8");
@@ -36,6 +38,7 @@ public class CreditCardOperations {
         return "Not encrypted";
     }
 
+    //decrypt creditcard from database
     public String decryptCard(String StringtoDecrpyt) {
         try {
             byte[] decrypt = DatatypeConverter.parseBase64Binary(StringtoDecrpyt);
@@ -76,6 +79,7 @@ public class CreditCardOperations {
         }
     }
 
+    //check if CV2  number is 3 didgits
     public boolean isCV2Valid() {
         CreditCard creditcard = CreditCard.getCreditCardInstance();
         String CVN = creditcard.getCVNum();
@@ -86,6 +90,7 @@ public class CreditCardOperations {
         }
     }
 
+    //check if entered values are valid
     private boolean areEntriesValid() {
         CreditCard creditcard = CreditCard.getCreditCardInstance();
         Validator validator = new Validator();
@@ -104,6 +109,7 @@ public class CreditCardOperations {
         }
     }
 
+    //check if the credit card entered is valid
     public boolean isCreditCardValid() {
         boolean isCardValidNumber;
         boolean areEntriesValid;
