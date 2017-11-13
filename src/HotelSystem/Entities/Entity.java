@@ -1,7 +1,7 @@
 package HotelSystem.Entities;
 
 
-public abstract class Entity {
+public interface Entity {
     
 }
  
